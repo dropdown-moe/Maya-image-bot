@@ -10,7 +10,7 @@ load_dotenv()
 
 bot = lightbulb.BotApp(
     token = os.getenv("DISCORD_TOKEN"),
-    default_enabled_guilds=(707938586988642376, 965307477698707506)
+    default_enabled_guilds=(707938586988642376, 965307477698707506, 767743597809500160)
 )
 
 @bot.listen(hikari.StartedEvent)
@@ -32,6 +32,23 @@ original_list = (
         "https://imgur.com/a/k4XJV5M",
         "https://imgur.com/a/yYDLbqj",
         "https://imgur.com/a/9BFjAjl",
+        "https://imgur.com/KW9Q9Mm",
+        "https://imgur.com/a/5uvsrNI",
+        "https://imgur.com/a/l9Vt9hm",
+        "https://imgur.com/a/z6zyizP",
+        "https://imgur.com/a/HqcTUCg",
+        "https://imgur.com/a/CdCkFr0",
+        "https://imgur.com/a/WXCR5zV",
+        "https://imgur.com/a/DS84qv4",
+        "https://imgur.com/a/EvZ1b0m",
+        "https://imgur.com/a/DZP80ef",
+        "https://imgur.com/a/irFHIDK",
+        "https://imgur.com/a/NyIPM4R",
+        "https://imgur.com/a/BNLsC5r",
+        "https://imgur.com/a/dFw597F",
+        "https://imgur.com/a/dbYVa4Q",
+        "https://imgur.com/a/aCcqucN",
+
     )
 
 
