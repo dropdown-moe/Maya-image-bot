@@ -10,7 +10,13 @@ load_dotenv()
 
 bot = lightbulb.BotApp(
     token = os.getenv("DISCORD_TOKEN"),
-    default_enabled_guilds=(707938586988642376, 965307477698707506, 767743597809500160)
+    default_enabled_guilds=
+    (
+    707938586988642376, 
+    965307477698707506, 
+    767743597809500160, 
+    134028939764039681,
+    )
 )
 
 @bot.listen(hikari.StartedEvent)
