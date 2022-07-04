@@ -29,7 +29,7 @@ async def on_started(event):
 async def ping(ctx):
     await ctx.respond("pong!")
 
-original_list = (
+Maya_list = (
         "https://imgur.com/a/5BCZbU6",
         "https://imgur.com/a/HdmLapI",
         "https://imgur.com/a/3eBuE73",
@@ -62,9 +62,9 @@ original_list = (
 @lightbulb.command('maya', 'provides an adorable maya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def maya(ctx):
-    await ctx.respond(random.choice(original_list))
+    await ctx.respond(random.choice(Maya_list))
 
-original_list_2 = (
+Megu_list = (
     "https://imgur.com/a/z1qwl9E",
     "https://imgur.com/a/GqD3XhJ",
     "https://imgur.com/a/xU8hRFF",
@@ -87,6 +87,28 @@ original_list_2 = (
 @lightbulb.command('megu', 'provides an adorable megu image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def megu(ctx):
-    await ctx.respond(random.choice(original_list_2))
+    await ctx.respond(random.choice(Megu_list))
+
+Chino_list = (
+    "https://imgur.com/a/6cqBEWq",
+    "https://imgur.com/a/tEIgGw9",
+    "https://imgur.com/a/Kjo9OXN",
+    "https://imgur.com/a/MIonahM",
+    "https://imgur.com/a/XLuDsVo",
+    "https://imgur.com/a/AW8lRNW",
+    "https://imgur.com/a/Ai3nD70",
+    "https://imgur.com/a/uikfBd9",
+    "https://imgur.com/a/QXIuY8F",
+    "https://imgur.com/a/JdHjJS7",
+    "https://imgur.com/a/XTQAumA",
+    "https://imgur.com/a/y1xyhMH",
+    "https://imgur.com/a/AV4ESDK",
+)
+
+@bot.command
+@lightbulb.command('chino', 'provides an adorable megu image!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def chino(ctx):
+    await ctx.respond(random.choice(Chino_list))
 
 bot.run()
