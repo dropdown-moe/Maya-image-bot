@@ -64,4 +64,29 @@ original_list = (
 async def maya(ctx):
     await ctx.respond(random.choice(original_list))
 
+original_list_2 = (
+    "https://imgur.com/a/z1qwl9E",
+    "https://imgur.com/a/GqD3XhJ",
+    "https://imgur.com/a/xU8hRFF",
+    "https://imgur.com/a/0RQIsK1",
+    "https://imgur.com/a/se3CwbZ",
+    "https://imgur.com/a/QPcUvPo",
+    "https://imgur.com/a/pvSEMY9",
+    "https://imgur.com/a/5haYKhL",
+    "https://imgur.com/a/7drA2yE",
+    "https://imgur.com/a/RnvmedE",
+    "https://imgur.com/a/7uJCZ2G",
+    "https://imgur.com/a/01iQRwr",
+    "https://imgur.com/a/f7XuoCZ",
+    "https://imgur.com/a/XwBJI37",
+    "https://imgur.com/a/gTks9ZN",
+)
+
+
+@bot.command
+@lightbulb.command('megu', 'provides an adorable megu image!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def megu(ctx):
+    await ctx.respond(random.choice(original_list_2))
+
 bot.run()
