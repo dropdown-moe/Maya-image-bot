@@ -106,7 +106,7 @@ Chino_list = (
 )
 
 @bot.command
-@lightbulb.command('chino', 'provides an adorable megu image!')
+@lightbulb.command('chino', 'provides an adorable chino image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
     await ctx.respond(random.choice(Chino_list))
