@@ -30,25 +30,24 @@ async def ping(ctx):
     await ctx.respond("pong!")
 
 Maya_list = (
-        "https://imgur.com/a/5BCZbU6",
-        "https://imgur.com/a/HdmLapI",
-        "https://imgur.com/a/3eBuE73",
-        "https://imgur.com/a/k4XJV5M",
-        "https://imgur.com/a/yYDLbqj",
-        "https://imgur.com/a/9BFjAjl",
-        "https://imgur.com/KW9Q9Mm",
-        "https://imgur.com/a/HqcTUCg",
-        "https://imgur.com/a/CdCkFr0",
-        "https://imgur.com/a/WXCR5zV",
-        "https://imgur.com/a/DS84qv4",
-        "https://imgur.com/a/EvZ1b0m",
-        "https://imgur.com/a/irFHIDK",
-        "https://imgur.com/a/NyIPM4R",
-        "https://imgur.com/a/BNLsC5r",
-        "https://imgur.com/a/dFw597F",
-        "https://imgur.com/a/dbYVa4Q",
-        "https://imgur.com/a/aCcqucN",
-
+    "https://imgur.com/a/5BCZbU6",
+    "https://imgur.com/a/HdmLapI",
+    "https://imgur.com/a/3eBuE73",
+    "https://imgur.com/a/k4XJV5M",
+    "https://imgur.com/a/yYDLbqj",
+    "https://imgur.com/a/9BFjAjl",
+    "https://imgur.com/KW9Q9Mm",
+    "https://imgur.com/a/HqcTUCg",
+    "https://imgur.com/a/CdCkFr0",
+    "https://imgur.com/a/WXCR5zV",
+    "https://imgur.com/a/DS84qv4",
+    "https://imgur.com/a/EvZ1b0m",
+    "https://imgur.com/a/irFHIDK",
+    "https://imgur.com/a/NyIPM4R",
+    "https://imgur.com/a/BNLsC5r",
+    "https://imgur.com/a/dFw597F",
+    "https://imgur.com/a/dbYVa4Q",
+    "https://imgur.com/a/aCcqucN",
     )
 
 
