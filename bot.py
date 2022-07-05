@@ -33,21 +33,15 @@ Maya_list = (
         "https://imgur.com/a/5BCZbU6",
         "https://imgur.com/a/HdmLapI",
         "https://imgur.com/a/3eBuE73",
-        "https://imgur.com/a/VwznUqY",
-        "https://imgur.com/a/G05Z4zI",
         "https://imgur.com/a/k4XJV5M",
         "https://imgur.com/a/yYDLbqj",
         "https://imgur.com/a/9BFjAjl",
         "https://imgur.com/KW9Q9Mm",
-        "https://imgur.com/a/5uvsrNI",
-        "https://imgur.com/a/l9Vt9hm",
-        "https://imgur.com/a/z6zyizP",
         "https://imgur.com/a/HqcTUCg",
         "https://imgur.com/a/CdCkFr0",
         "https://imgur.com/a/WXCR5zV",
         "https://imgur.com/a/DS84qv4",
         "https://imgur.com/a/EvZ1b0m",
-        "https://imgur.com/a/DZP80ef",
         "https://imgur.com/a/irFHIDK",
         "https://imgur.com/a/NyIPM4R",
         "https://imgur.com/a/BNLsC5r",
@@ -110,5 +104,21 @@ Chino_list = (
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
     await ctx.respond(random.choice(Chino_list))
+    
+Chimame_list = (
+    "https://imgur.com/a/G05Z4zI",
+    "https://imgur.com/a/VwznUqY",
+    "https://imgur.com/a/l9Vt9hm",
+    "https://imgur.com/a/5uvsrNI",
+    "https://imgur.com/a/z6zyizP",
+    "https://imgur.com/a/DZP80ef",
+    "https://twitter.com/mozukun43/status/1314877808246575106",
+)
+
+@bot.command
+@lightbulb.command('chimame', 'provides an adorable chimame image!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def chimame(ctx):
+    await ctx.respond(random.choice(Chimame_list))
 
 bot.run()
