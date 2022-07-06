@@ -29,6 +29,8 @@ async def on_started(event):
 async def ping(ctx):
     await ctx.respond("pong!")
 
+
+
 Maya_list = (
     "https://imgur.com/a/5BCZbU6",
     "https://imgur.com/a/HdmLapI",
@@ -127,5 +129,11 @@ Chimame_list = (
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chimame(ctx):
     await ctx.respond(random.choice(Chimame_list))
+
+@bot.command
+@lightbulb.command('patmaya', 'pats maya!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def test(ctx):
+    await ctx.respond('<:MayaSugoi:741219402770546759>')
 
 bot.run()
