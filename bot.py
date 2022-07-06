@@ -48,6 +48,7 @@ Maya_list = (
     "https://imgur.com/a/dFw597F",
     "https://imgur.com/a/dbYVa4Q",
     "https://imgur.com/a/aCcqucN",
+    "https://imgur.com/a/Kq6TNC0",
     )
 
 
@@ -73,6 +74,8 @@ Megu_list = (
     "https://imgur.com/a/f7XuoCZ",
     "https://imgur.com/a/XwBJI37",
     "https://imgur.com/a/gTks9ZN",
+    "https://imgur.com/a/GyGU97d",
+    "https://imgur.com/a/w2iRZN5",
 )
 
 
@@ -96,6 +99,11 @@ Chino_list = (
     "https://imgur.com/a/XTQAumA",
     "https://imgur.com/a/y1xyhMH",
     "https://imgur.com/a/AV4ESDK",
+    "https://imgur.com/a/5CiDTfT",
+    "https://imgur.com/a/8zBwhQm",
+    "https://imgur.com/a/XJENwHW",
+    "https://imgur.com/a/AdpkkdQ",
+    "https://imgur.com/a/ymUT5W8",
 )
 
 @bot.command
