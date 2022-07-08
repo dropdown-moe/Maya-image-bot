@@ -24,12 +24,10 @@ async def on_started(event):
     print('bot has started!')
 
 @bot.command
-@lightbulb.command('ping', 'Says pong!')
+@lightbulb.command('ping', 'check if maya is awake!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
     await ctx.respond("pong!")
-
-
 
 Maya_list = (
     "https://imgur.com/a/5BCZbU6",
@@ -78,6 +76,7 @@ Megu_list = (
     "https://imgur.com/a/gTks9ZN",
     "https://imgur.com/a/GyGU97d",
     "https://imgur.com/a/w2iRZN5",
+    "https://imgur.com/a/hu0VihG",
 )
 
 
@@ -135,5 +134,11 @@ async def chimame(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def test(ctx):
     await ctx.respond('<:MayaSugoi:741219402770546759>')
+
+@bot.command
+@lightbulb.command('cqc', 'Use CQC!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def cqc(ctx):
+    await ctx.respond('I-is this CQC?! <:MayaShock:804760846068744252>')
 
 bot.run()
