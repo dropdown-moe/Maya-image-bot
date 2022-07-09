@@ -57,6 +57,7 @@ Maya_list = (
     "https://imgur.com/a/Kq6TNC0",
     "https://imgur.com/a/zDPyggR",
     "https://imgur.com/a/hz3Pern",
+    "<:Mayaya:853546054951501847> You got the rare **Rainbow Maya!** https://imgur.com/a/2tLSihF",
     )
 
 @bot.command
