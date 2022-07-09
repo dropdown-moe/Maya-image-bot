@@ -49,8 +49,9 @@ Maya_list = (
     "https://imgur.com/a/dbYVa4Q",
     "https://imgur.com/a/aCcqucN",
     "https://imgur.com/a/Kq6TNC0",
+    "https://imgur.com/a/zDPyggR",
+    "https://imgur.com/a/hz3Pern",
     )
-
 
 @bot.command
 @lightbulb.command('maya', 'provides an adorable maya image!')
@@ -78,7 +79,6 @@ Megu_list = (
     "https://imgur.com/a/w2iRZN5",
     "https://imgur.com/a/hu0VihG",
 )
-
 
 @bot.command
 @lightbulb.command('megu', 'provides an adorable megu image!')
@@ -129,11 +129,73 @@ Chimame_list = (
 async def chimame(ctx):
     await ctx.respond(random.choice(Chimame_list))
 
+Cocoa_list = (
+    "https://imgur.com/a/lFRRdjg",
+    "https://imgur.com/a/fisXPfp",
+    "https://imgur.com/a/XTlucbx",
+    "https://imgur.com/a/FNBgnIo",
+    "https://imgur.com/a/zHR70hV",
+    "https://imgur.com/a/Hbk5MTr",
+    "https://imgur.com/a/Aomv8cQ",
+)
+
+@bot.command
+@lightbulb.command('cocoa', 'provides an adorable cocoa image!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def cocoa(ctx):
+    await ctx.respond(random.choice(Cocoa_list))
+
+Rize_list = (
+    "https://imgur.com/a/ECLvtE3",
+    "https://imgur.com/a/ScpMpBY",
+    "https://imgur.com/a/Qpc0xSB",
+    "https://imgur.com/a/9jflDSd",
+    "https://imgur.com/a/zndxii3",
+    "https://imgur.com/a/Qo0fdYu",
+    "https://imgur.com/a/Q9dRgbv",
+)
+
+@bot.command
+@lightbulb.command('rize', 'provides an adorable rize image!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def rize(ctx):
+    await ctx.respond(random.choice(Rize_list))
+
+Syaro_list = (
+    "https://imgur.com/a/Q9dRgbv",
+    "https://imgur.com/a/2K8D2kP",
+    "https://imgur.com/a/5ZQNxbw",
+    "https://imgur.com/a/nbPmNNG",
+    "https://imgur.com/a/kPNTX2v",
+    "https://imgur.com/a/Dsh0Dyb",
+)
+
+@bot.command
+@lightbulb.command('syaro', 'provides an adorable syaro image!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def syaro(ctx):
+    await ctx.respond(random.choice(Syaro_list))
+
+Chiya_list = (
+    "https://imgur.com/a/PBFUaPd",
+    "https://imgur.com/a/EPrx3Y7",
+    "https://imgur.com/a/mBrdyLp",
+    "https://imgur.com/a/pzE6Qdu",
+    "https://imgur.com/a/DDEpZhO",
+    "https://imgur.com/a/LoC8SKp",
+)
+
+@bot.command
+@lightbulb.command('chiya', 'provides an adorable chiya image!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def chiya(ctx):
+    await ctx.respond(random.choice(Chiya_list))
+
 @bot.command
 @lightbulb.command('patmaya', 'pats maya!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def test(ctx):
-    await ctx.respond('<:MayaSugoi:741219402770546759>')
+    await ctx.respond('<a:mayapat1:855215364370595840>')
 
 @bot.command
 @lightbulb.command('cqc', 'Use CQC!')
