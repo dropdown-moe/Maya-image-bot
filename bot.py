@@ -19,11 +19,17 @@ bot = lightbulb.BotApp(
     )
 )
 
+@bot.listen(lightbulb.CommandErrorEvent)
+async def on_error(event: lightbulb.CommandErrorEvent):
+    if isinstance(event.exception, lightbulb.CommandIsOnCooldown):
+        await event.context.respond(f"Hey, dont spam! <:mayagun:978841590644752464>")
+
 @bot.listen(hikari.StartedEvent)
 async def on_started(event):
     print('bot has started!')
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('ping', 'check if maya is awake!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
@@ -54,6 +60,7 @@ Maya_list = (
     )
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('maya', 'provides an adorable maya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def maya(ctx):
@@ -81,6 +88,7 @@ Megu_list = (
 )
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('megu', 'provides an adorable megu image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def megu(ctx):
@@ -108,6 +116,7 @@ Chino_list = (
 )
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('chino', 'provides an adorable chino image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
@@ -124,6 +133,7 @@ Chimame_list = (
 )
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('chimame', 'provides an adorable chimame image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chimame(ctx):
@@ -140,6 +150,7 @@ Cocoa_list = (
 )
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('cocoa', 'provides an adorable cocoa image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cocoa(ctx):
@@ -156,6 +167,7 @@ Rize_list = (
 )
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('rize', 'provides an adorable rize image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rize(ctx):
@@ -171,6 +183,7 @@ Syaro_list = (
 )
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('syaro', 'provides an adorable syaro image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def syaro(ctx):
@@ -186,18 +199,21 @@ Chiya_list = (
 )
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('chiya', 'provides an adorable chiya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chiya(ctx):
     await ctx.respond(random.choice(Chiya_list))
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('patmaya', 'pats maya!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def test(ctx):
     await ctx.respond('<a:mayapat1:855215364370595840>')
 
 @bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('cqc', 'Use CQC!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cqc(ctx):
