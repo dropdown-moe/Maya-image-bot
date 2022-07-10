@@ -28,16 +28,23 @@ async def on_error(event: lightbulb.CommandErrorEvent):
 async def on_started(event):
     print('bot has started!')
 
+Greeting_list = (
+    "Im awake! <:mayamad:769351954685231144>",
+    "<a:Mayapeek:984626950825996389>",
+    "Good morning! <a:MayaWaveLeft:963294293777338399>",
+    "Good morning~ <:mayasleepy:963562283219427389>",
+    "I dont wanna get up! <a:MayaTantrum:852257288630566952>",
+)
+
 @bot.command
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('ping', 'check if maya is awake!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    await ctx.respond("pong!")
+    await ctx.respond(random.choice(Greeting_list))
 
 Maya_list = (
     "https://imgur.com/a/5BCZbU6",
-    "https://imgur.com/a/HdmLapI",
     "https://imgur.com/a/3eBuE73",
     "https://imgur.com/a/k4XJV5M",
     "https://imgur.com/a/yYDLbqj",
@@ -114,6 +121,7 @@ Chino_list = (
     "https://imgur.com/a/XJENwHW",
     "https://imgur.com/a/AdpkkdQ",
     "https://imgur.com/a/ymUT5W8",
+    "https://imgur.com/a/IomSPJJ",
 )
 
 @bot.command
@@ -130,6 +138,7 @@ Chimame_list = (
     "https://imgur.com/a/5uvsrNI",
     "https://imgur.com/a/z6zyizP",
     "https://imgur.com/a/DZP80ef",
+    "https://imgur.com/a/HdmLapI",
     "https://twitter.com/mozukun43/status/1314877808246575106",
 )
 
@@ -148,6 +157,9 @@ Cocoa_list = (
     "https://imgur.com/a/zHR70hV",
     "https://imgur.com/a/Hbk5MTr",
     "https://imgur.com/a/Aomv8cQ",
+    "https://imgur.com/a/QgauP2Z",
+    "https://imgur.com/a/SWYqfeI",
+    ""
 )
 
 @bot.command
@@ -165,6 +177,8 @@ Rize_list = (
     "https://imgur.com/a/zndxii3",
     "https://imgur.com/a/Qo0fdYu",
     "https://imgur.com/a/Q9dRgbv",
+    "https://imgur.com/a/3j79cAm",
+    "https://imgur.com/a/dIcjHsl",
 )
 
 @bot.command
@@ -181,6 +195,14 @@ Syaro_list = (
     "https://imgur.com/a/nbPmNNG",
     "https://imgur.com/a/kPNTX2v",
     "https://imgur.com/a/Dsh0Dyb",
+    "https://imgur.com/a/j7AxQ9F",
+    "https://imgur.com/a/0gXpjHe",
+    "https://imgur.com/a/Djgd0xu",
+    "https://imgur.com/a/7KlwBaR",
+    "https://imgur.com/a/94p3d9S",
+    "https://imgur.com/a/ocM4oZr",
+    "https://imgur.com/a/bz5TuUn",
+    "https://imgur.com/a/BFUK4wB",
 )
 
 @bot.command
@@ -197,6 +219,8 @@ Chiya_list = (
     "https://imgur.com/a/pzE6Qdu",
     "https://imgur.com/a/DDEpZhO",
     "https://imgur.com/a/LoC8SKp",
+    "https://imgur.com/a/C11kaVW",
+    "https://imgur.com/a/MPmTheX",
 )
 
 @bot.command
@@ -210,8 +234,15 @@ async def chiya(ctx):
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('patmaya', 'pats maya!')
 @lightbulb.implements(lightbulb.SlashCommand)
-async def test(ctx):
+async def patmaya(ctx):
     await ctx.respond('<a:mayapat1:855215364370595840>')
+
+@bot.command
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.command('patmegu', 'pats megu!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def patmegu(ctx):
+    await ctx.respond('<a:MeguPat:904726832027422720>')
 
 @bot.command
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
