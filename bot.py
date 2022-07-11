@@ -65,6 +65,12 @@ Maya_list = (
     "https://imgur.com/a/zDPyggR",
     "https://imgur.com/a/hz3Pern",
     "<:Mayaya:853546054951501847> You got the rare **Rainbow Maya!** https://imgur.com/a/2tLSihF",
+    "https://imgur.com/a/T6xsgZR",
+    "https://imgur.com/a/FaMSgzs",
+    "https://imgur.com/a/wtNvfUX",
+    "https://imgur.com/a/DRzgfKF",
+    "https://imgur.com/a/hobDGt0",
+    "https://imgur.com/a/8bq9DF0",
     )
 
 @bot.command
@@ -122,6 +128,9 @@ Chino_list = (
     "https://imgur.com/a/AdpkkdQ",
     "https://imgur.com/a/ymUT5W8",
     "https://imgur.com/a/IomSPJJ",
+    "https://imgur.com/a/IS9tGSI",
+    "https://imgur.com/a/H6qTR2s",
+    "https://imgur.com/a/wQG96Co",
 )
 
 @bot.command
@@ -179,6 +188,11 @@ Rize_list = (
     "https://imgur.com/a/Q9dRgbv",
     "https://imgur.com/a/3j79cAm",
     "https://imgur.com/a/dIcjHsl",
+    "https://imgur.com/a/GdKMm7t",
+    "https://imgur.com/a/dXeZY8c",
+    "https://imgur.com/a/uV4bVZF",
+    "https://imgur.com/a/WGGqnUh",
+    "https://imgur.com/a/I4UCK1X",
 )
 
 @bot.command
@@ -221,6 +235,7 @@ Chiya_list = (
     "https://imgur.com/a/LoC8SKp",
     "https://imgur.com/a/C11kaVW",
     "https://imgur.com/a/MPmTheX",
+    "https://imgur.com/a/wQG96Co",
 )
 
 @bot.command
@@ -244,11 +259,16 @@ async def patmaya(ctx):
 async def patmegu(ctx):
     await ctx.respond('<a:MeguPat:904726832027422720>')
 
+cqc_list = (
+    "I-is this CQC?! <:MayaShock:804760846068744252>",
+    "I can do CQC and stuff too! <:MayaSmug:741219402363437076>",
+)
+
 @bot.command
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('cqc', 'Use CQC!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cqc(ctx):
-    await ctx.respond('I-is this CQC?! <:MayaShock:804760846068744252>')
+    await ctx.respond(random.choice(cqc_list))
 
 bot.run()
