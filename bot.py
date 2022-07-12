@@ -1,4 +1,8 @@
+from email.policy import default
+from math import perm
+from multiprocessing import context
 from random import Random, random, sample
+from telnetlib import SEND_URL
 from unittest import result
 import hikari
 import lightbulb
@@ -19,10 +23,14 @@ bot = lightbulb.BotApp(
     )
 )
 
+
+
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent):
-    if isinstance(event.exception, lightbulb.CommandIsOnCooldown):
-        await event.context.respond(f"Hey, dont spam! <:mayagun:978841590644752464>")
+    if isinstance(event.exception, lightbulb.CommandIsOnCooldown): 
+        await event.context.respond(f"Hey, dont spam! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
+
+
 
 @bot.listen(hikari.StartedEvent)
 async def on_started(event):
@@ -37,11 +45,13 @@ Greeting_list = (
 )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('ping', 'check if maya is awake!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
     await ctx.respond(random.choice(Greeting_list))
+
+
 
 Maya_list = (
     "https://imgur.com/a/5BCZbU6",
@@ -80,6 +90,8 @@ Maya_list = (
 async def maya(ctx):
     await ctx.respond(random.choice(Maya_list))
 
+
+
 Megu_list = (
     "https://imgur.com/a/z1qwl9E",
     "https://imgur.com/a/GqD3XhJ",
@@ -108,6 +120,8 @@ Megu_list = (
 async def megu(ctx):
     await ctx.respond(random.choice(Megu_list))
 
+
+
 Chino_list = (
     "https://imgur.com/a/6cqBEWq",
     "https://imgur.com/a/tEIgGw9",
@@ -131,6 +145,8 @@ Chino_list = (
     "https://imgur.com/a/IS9tGSI",
     "https://imgur.com/a/H6qTR2s",
     "https://imgur.com/a/wQG96Co",
+    "https://imgur.com/a/zxR9P69",
+    "https://imgur.com/a/qaIquS1",
 )
 
 @bot.command
@@ -140,6 +156,8 @@ Chino_list = (
 async def chino(ctx):
     await ctx.respond(random.choice(Chino_list))
     
+
+
 Chimame_list = (
     "https://imgur.com/a/G05Z4zI",
     "https://imgur.com/a/VwznUqY",
@@ -158,6 +176,8 @@ Chimame_list = (
 async def chimame(ctx):
     await ctx.respond(random.choice(Chimame_list))
 
+
+
 Cocoa_list = (
     "https://imgur.com/a/lFRRdjg",
     "https://imgur.com/a/fisXPfp",
@@ -168,7 +188,10 @@ Cocoa_list = (
     "https://imgur.com/a/Aomv8cQ",
     "https://imgur.com/a/QgauP2Z",
     "https://imgur.com/a/SWYqfeI",
-    ""
+    "https://imgur.com/a/PJnw7OK",
+    "https://imgur.com/a/OEk7kbn",
+    "https://imgur.com/a/6gCOTeT",
+    "https://imgur.com/a/NRtPPwO",
 )
 
 @bot.command
@@ -177,6 +200,8 @@ Cocoa_list = (
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cocoa(ctx):
     await ctx.respond(random.choice(Cocoa_list))
+
+
 
 Rize_list = (
     "https://imgur.com/a/ECLvtE3",
@@ -202,6 +227,8 @@ Rize_list = (
 async def rize(ctx):
     await ctx.respond(random.choice(Rize_list))
 
+
+
 Syaro_list = (
     "https://imgur.com/a/Q9dRgbv",
     "https://imgur.com/a/2K8D2kP",
@@ -226,6 +253,8 @@ Syaro_list = (
 async def syaro(ctx):
     await ctx.respond(random.choice(Syaro_list))
 
+
+
 Chiya_list = (
     "https://imgur.com/a/PBFUaPd",
     "https://imgur.com/a/EPrx3Y7",
@@ -236,6 +265,10 @@ Chiya_list = (
     "https://imgur.com/a/C11kaVW",
     "https://imgur.com/a/MPmTheX",
     "https://imgur.com/a/wQG96Co",
+    "https://imgur.com/a/SvX5QqJ",
+    "https://imgur.com/a/r7fqXba",
+    "https://imgur.com/a/R9eHyXG",
+    "https://imgur.com/a/0aKAX2p",
 )
 
 @bot.command
@@ -245,6 +278,8 @@ Chiya_list = (
 async def chiya(ctx):
     await ctx.respond(random.choice(Chiya_list))
 
+
+
 @bot.command
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('patmaya', 'pats maya!')
@@ -252,12 +287,16 @@ async def chiya(ctx):
 async def patmaya(ctx):
     await ctx.respond('<a:mayapat1:855215364370595840>')
 
+
+
 @bot.command
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.command('patmegu', 'pats megu!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def patmegu(ctx):
     await ctx.respond('<a:MeguPat:904726832027422720>')
+
+
 
 cqc_list = (
     "I-is this CQC?! <:MayaShock:804760846068744252>",
