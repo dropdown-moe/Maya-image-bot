@@ -29,7 +29,8 @@ bot = lightbulb.BotApp(
 async def on_error(event: lightbulb.CommandErrorEvent):
     if isinstance(event.exception, lightbulb.CommandIsOnCooldown): 
         await event.context.respond(f"Hey, dont spam! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
-
+    if isinstance(event.exception, lightbulb.MaxConcurrencyLimitReached):
+        await event.context.respond(f"You're trying to run too many commands at the same time! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
 
 
 @bot.listen(hikari.StartedEvent)
@@ -45,6 +46,7 @@ Greeting_list = (
 )
 
 @bot.command
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('ping', 'check if maya is awake!')
 @lightbulb.implements(lightbulb.SlashCommand)
@@ -81,10 +83,15 @@ Maya_list = (
     "https://imgur.com/a/DRzgfKF",
     "https://imgur.com/a/hobDGt0",
     "https://imgur.com/a/8bq9DF0",
+    "https://imgur.com/a/4nzTh5A",
+    "https://imgur.com/a/pUcXGrY",
+    "https://imgur.com/a/5eBptvR",
+    "https://imgur.com/a/flvnl5G",
     )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('maya', 'provides an adorable maya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def maya(ctx):
@@ -111,10 +118,13 @@ Megu_list = (
     "https://imgur.com/a/GyGU97d",
     "https://imgur.com/a/w2iRZN5",
     "https://imgur.com/a/hu0VihG",
+    "https://imgur.com/a/4nzTh5A",
+    "https://imgur.com/a/0QEZ2F7",
 )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('megu', 'provides an adorable megu image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def megu(ctx):
@@ -147,10 +157,17 @@ Chino_list = (
     "https://imgur.com/a/wQG96Co",
     "https://imgur.com/a/zxR9P69",
     "https://imgur.com/a/qaIquS1",
+    "https://imgur.com/a/tSY1Nao",
+    "https://imgur.com/a/YKrcnpu",
+    "https://imgur.com/a/hkQOZfb",
+    "https://imgur.com/a/vw8Ajr1",
+    "https://imgur.com/a/xpdwQfv",
+    "https://imgur.com/a/6EnAEiV",
 )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chino', 'provides an adorable chino image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
@@ -167,10 +184,12 @@ Chimame_list = (
     "https://imgur.com/a/DZP80ef",
     "https://imgur.com/a/HdmLapI",
     "https://twitter.com/mozukun43/status/1314877808246575106",
+    "https://imgur.com/a/43PXfyu",
 )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chimame', 'provides an adorable chimame image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chimame(ctx):
@@ -192,10 +211,20 @@ Cocoa_list = (
     "https://imgur.com/a/OEk7kbn",
     "https://imgur.com/a/6gCOTeT",
     "https://imgur.com/a/NRtPPwO",
+    "https://imgur.com/a/KCfW6tL",
+    "https://imgur.com/a/Btg6djp",
+    "https://imgur.com/a/B2kfIwk",
+    "https://imgur.com/a/BUeZdlS",
+    "https://imgur.com/a/uKRcesl",
+    "https://imgur.com/a/CMbUTbB",
+    "https://imgur.com/a/1SeAp3g",
+    "https://imgur.com/a/uPY7lhx",
+    "https://imgur.com/a/kOBBw8r",
 )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('cocoa', 'provides an adorable cocoa image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cocoa(ctx):
@@ -218,10 +247,15 @@ Rize_list = (
     "https://imgur.com/a/uV4bVZF",
     "https://imgur.com/a/WGGqnUh",
     "https://imgur.com/a/I4UCK1X",
+    "https://imgur.com/a/gA44Xon",
+    "https://imgur.com/a/lJKB5Qo",
+    "https://imgur.com/a/oQm65ua",
+    "https://imgur.com/a/U2CHvQ4",
 )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('rize', 'provides an adorable rize image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rize(ctx):
@@ -244,10 +278,18 @@ Syaro_list = (
     "https://imgur.com/a/ocM4oZr",
     "https://imgur.com/a/bz5TuUn",
     "https://imgur.com/a/BFUK4wB",
+    "https://imgur.com/a/IWkdws2",
+    "https://imgur.com/a/zMUqKCy",
+    "https://imgur.com/a/7vheXL8",
+    "https://imgur.com/a/1yBcFiw",
+    "https://imgur.com/a/5gsEEos",
+    "https://imgur.com/a/srUXXka",
+    "https://imgur.com/a/hkQOZfb",
 )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('syaro', 'provides an adorable syaro image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def syaro(ctx):
@@ -269,10 +311,17 @@ Chiya_list = (
     "https://imgur.com/a/r7fqXba",
     "https://imgur.com/a/R9eHyXG",
     "https://imgur.com/a/0aKAX2p",
+    "https://imgur.com/a/GEuYag7",
+    "https://imgur.com/a/IJSYspj",
+    "https://imgur.com/a/sBaeqWE",
+    "https://imgur.com/a/s5gXkC3",
+    "https://imgur.com/a/NovbC60",
+    "https://imgur.com/a/eKeiL8B",
 )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chiya', 'provides an adorable chiya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chiya(ctx):
@@ -281,7 +330,8 @@ async def chiya(ctx):
 
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('patmaya', 'pats maya!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def patmaya(ctx):
@@ -290,11 +340,22 @@ async def patmaya(ctx):
 
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('patmegu', 'pats megu!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def patmegu(ctx):
     await ctx.respond('<a:MeguPat:904726832027422720>')
+
+
+
+@bot.command
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.command('patchino', 'pats chino!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def patchino(ctx):
+    await ctx.respond('<a:patchino:997143091175751791>')
 
 
 
@@ -304,7 +365,8 @@ cqc_list = (
 )
 
 @bot.command
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('cqc', 'Use CQC!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cqc(ctx):
