@@ -99,6 +99,7 @@ Chino_list = (
     "https://imgur.com/a/vw8Ajr1",
     "https://imgur.com/a/xpdwQfv",
     "https://imgur.com/a/6EnAEiV",
+    "https://imgur.com/a/wQG96Co",
 )
 
 Chimame_list = (
@@ -192,7 +193,6 @@ Chiya_list = (
     "https://imgur.com/a/LoC8SKp",
     "https://imgur.com/a/C11kaVW",
     "https://imgur.com/a/MPmTheX",
-    "https://imgur.com/a/wQG96Co",
     "https://imgur.com/a/SvX5QqJ",
     "https://imgur.com/a/r7fqXba",
     "https://imgur.com/a/R9eHyXG",

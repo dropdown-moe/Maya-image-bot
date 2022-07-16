@@ -29,8 +29,10 @@ bot = lightbulb.BotApp(
 async def on_error(event: lightbulb.CommandErrorEvent):
     if isinstance(event.exception, lightbulb.CommandIsOnCooldown): 
         await event.context.respond(f"Hey, dont spam! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
+        print("Command cooldown error")
     if isinstance(event.exception, lightbulb.MaxConcurrencyLimitReached):
         await event.context.respond(f"You're trying to run too many commands at the same time! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
+        print("Concurrency limit reached")
 
 @bot.listen(hikari.StartedEvent)
 async def on_started(event):
@@ -44,6 +46,7 @@ async def on_started(event):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
     await ctx.respond(random.choice(listodata.Greeting_list))
+    print("Ping command invoked")
 
 # Maya
 @bot.command
@@ -53,6 +56,7 @@ async def ping(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def maya(ctx):
     await ctx.respond(random.choice(listodata.Maya_list))
+    print("Maya command invoked")
 
 # Megu
 @bot.command
@@ -62,6 +66,7 @@ async def maya(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def megu(ctx):
     await ctx.respond(random.choice(listodata.Megu_list))
+    print("Megu command invoked")
 
 # Chino
 @bot.command
@@ -71,6 +76,7 @@ async def megu(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
     await ctx.respond(random.choice(listodata.Chino_list))
+    print("chino command invoked")
 
 # Chimame
 @bot.command
@@ -80,6 +86,7 @@ async def chino(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chimame(ctx):
     await ctx.respond(random.choice(listodata.Chimame_list))
+    print("Chimame command invoked")
 
 # Cocoa
 @bot.command
@@ -89,6 +96,7 @@ async def chimame(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cocoa(ctx):
     await ctx.respond(random.choice(listodata.Cocoa_list))
+    print("Cocoa command invoked")
 
 # Rize
 @bot.command
@@ -98,6 +106,7 @@ async def cocoa(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rize(ctx):
     await ctx.respond(random.choice(listodata.Rize_list))
+    print("Rize command invoked")
 
 # Syaro
 @bot.command
@@ -107,6 +116,7 @@ async def rize(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def syaro(ctx):
     await ctx.respond(random.choice(listodata.Syaro_list))
+    print("Syaro command invoked")
 
 # Chiya
 @bot.command
@@ -116,6 +126,7 @@ async def syaro(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chiya(ctx):
     await ctx.respond(random.choice(listodata.Chiya_list))
+    print("Chiya command invoked")
 
 # Pat Maya
 @bot.command
@@ -125,6 +136,7 @@ async def chiya(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def patmaya(ctx):
     await ctx.respond('<a:mayapat1:855215364370595840>')
+    print(("Patmaya command invoked"))
 
 # Pat Megu
 @bot.command
@@ -134,6 +146,7 @@ async def patmaya(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def patmegu(ctx):
     await ctx.respond('<a:MeguPat:904726832027422720>')
+    print("Patmegu command invoked")
 
 # Pat Chino
 @bot.command
@@ -143,6 +156,7 @@ async def patmegu(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def patchino(ctx):
     await ctx.respond('<a:patchino:997143091175751791>')
+    print("Patchino command invoked")
 
 # CQC
 @bot.command
@@ -152,5 +166,6 @@ async def patchino(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cqc(ctx):
     await ctx.respond(random.choice(listodata.cqc_list))
+    print("CQC command invoked")
 
 bot.run()
