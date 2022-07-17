@@ -31,7 +31,7 @@ async def on_error(event: lightbulb.CommandErrorEvent):
         await event.context.respond(f"Hey, dont spam! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
         print("Command cooldown error")
     if isinstance(event.exception, lightbulb.MaxConcurrencyLimitReached):
-        await event.context.respond(f"You're trying to run too many commands at the same time! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
+        await event.context.respond(f"Too many commands running at the same time! <:MayaHowRude:798609231393587240>", flags=hikari.MessageFlag.EPHEMERAL)
         print("Concurrency limit reached")
 
 @bot.listen(hikari.StartedEvent)
@@ -76,7 +76,7 @@ async def megu(ctx):
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
     await ctx.respond(random.choice(listodata.Chino_list))
-    print("chino command invoked")
+    print("Chino command invoked")
 
 # Chimame
 @bot.command
@@ -167,5 +167,15 @@ async def patchino(ctx):
 async def cqc(ctx):
     await ctx.respond(random.choice(listodata.cqc_list))
     print("CQC command invoked")
+
+# Fuyu
+@bot.command
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.command('fuyu', 'provides an adorable fuyu image! (mostly manga stuff)')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def fuyu(ctx):
+    await ctx.respond(random.choice(listodata.Fuyu_list))
+    print("Fuyu command invoked")
 
 bot.run()

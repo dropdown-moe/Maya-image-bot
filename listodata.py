@@ -1,3 +1,5 @@
+# Please check any new images with @WlLDSAKE#3708 before adding them.
+
 Greeting_list = (
     "Im awake! <:mayamad:769351954685231144>",
     "<a:Mayapeek:984626950825996389>",
@@ -203,4 +205,22 @@ Chiya_list = (
     "https://imgur.com/a/s5gXkC3",
     "https://imgur.com/a/NovbC60",
     "https://imgur.com/a/eKeiL8B",
+)
+
+Fuyu_list = (
+    "https://imgur.com/a/JqWW0jZ",
+    "https://imgur.com/a/bKijUxY",
+    "https://imgur.com/a/BOq51bk",
+    "https://imgur.com/a/eRTTUOg",
+    "https://imgur.com/a/D2T1Ym4",
+    "https://imgur.com/a/cYje9nf",
+    "https://imgur.com/a/4nHd2jI",
+    "https://imgur.com/a/sNmOWxQ",
+    "https://imgur.com/a/gBqKlsc",
+    "https://imgur.com/a/iwIyid0",
+    "https://imgur.com/a/yXu2Iwz",
+    "https://imgur.com/a/ER98P5z",
+    "https://imgur.com/a/8z6mSIF",
+    "https://imgur.com/a/eEi2FQP",
+    "https://imgur.com/a/ZBetWp2",
 )
