@@ -1,11 +1,12 @@
 # Please check any new images with @WlLDSAKE#3708 before adding them.
 
 Greeting_list = (
-    "Im awake! <:mayamad:769351954685231144>",
-    "<a:Mayapeek:984626950825996389>",
-    "Good morning! <a:MayaWaveLeft:963294293777338399>",
-    "Good morning~ <:mayasleepy:963562283219427389>",
-    "I dont wanna get up! <a:MayaTantrum:852257288630566952>",
+    #"Im awake! <:mayamad:769351954685231144>",
+    #"<a:Mayapeek:984626950825996389>",
+    #"Good morning! <a:MayaWaveLeft:963294293777338399>",
+    #"Good morning~ <:mayasleepy:963562283219427389>",
+    #"I dont wanna get up! <a:MayaTantrum:852257288630566952>",
+    "I overslept... <:mayaded:787784902602129419>",
 )
 
 cqc_list = (
@@ -45,6 +46,21 @@ Maya_list = (
     "https://imgur.com/a/pUcXGrY",
     "https://imgur.com/a/5eBptvR",
     "https://imgur.com/a/flvnl5G",
+    "https://imgur.com/a/NkRFqdo",
+    "https://imgur.com/a/AXqaarW",
+    "https://imgur.com/a/aLSs7T5",
+    "https://imgur.com/a/mGH7vcT",
+    "https://imgur.com/a/kGr02Vv",
+    "https://imgur.com/a/ANMItED",
+    "https://imgur.com/a/F5WcC5e",
+    "https://imgur.com/a/Y2Wq2WK",
+    "https://imgur.com/a/EqWOuIz",
+    "https://imgur.com/a/mUZ9zIr",
+    "https://imgur.com/a/zjUnYYw",
+    "https://imgur.com/a/Nygvamz",
+    "https://imgur.com/a/Cz4rPYc",
+    "https://imgur.com/a/XyoFEuz",
+    "https://imgur.com/a/Xf0ylYG",
 )
 
 Megu_list = (
@@ -68,6 +84,7 @@ Megu_list = (
     "https://imgur.com/a/hu0VihG",
     "https://imgur.com/a/4nzTh5A",
     "https://imgur.com/a/0QEZ2F7",
+    "https://imgur.com/a/Y2Wq2WK",
 )
 
 Chino_list = (
@@ -223,4 +240,6 @@ Fuyu_list = (
     "https://imgur.com/a/8z6mSIF",
     "https://imgur.com/a/eEi2FQP",
     "https://imgur.com/a/ZBetWp2",
+    "https://imgur.com/a/nKrwoC3",
+    "https://imgur.com/a/GjzJB4K",
 )
