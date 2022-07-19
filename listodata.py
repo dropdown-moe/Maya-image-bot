@@ -1,11 +1,11 @@
 # Please check any new images with @WlLDSAKE#3708 before adding them.
 
 Greeting_list = (
-    #"Im awake! <:mayamad:769351954685231144>",
-    #"<a:Mayapeek:984626950825996389>",
-    #"Good morning! <a:MayaWaveLeft:963294293777338399>",
-    #"Good morning~ <:mayasleepy:963562283219427389>",
-    #"I dont wanna get up! <a:MayaTantrum:852257288630566952>",
+    "Im awake! <:mayamad:769351954685231144>",
+    "<a:Mayapeek:984626950825996389>",
+    "Good morning! <a:MayaWaveLeft:963294293777338399>",
+    "Good morning~ <:mayasleepy:963562283219427389>",
+    "I dont wanna get up! <a:MayaTantrum:852257288630566952>",
     "I overslept... <:mayaded:787784902602129419>",
 )
 
@@ -119,6 +119,11 @@ Chino_list = (
     "https://imgur.com/a/xpdwQfv",
     "https://imgur.com/a/6EnAEiV",
     "https://imgur.com/a/wQG96Co",
+    "https://imgur.com/a/vtKjY6O",
+    "https://imgur.com/a/qJUsU5K",
+    "https://imgur.com/a/vWvK26y",
+    "https://imgur.com/a/dOxTqra",
+    "https://imgur.com/a/9g7IAa1",
 )
 
 Chimame_list = (
@@ -156,6 +161,7 @@ Cocoa_list = (
     "https://imgur.com/a/1SeAp3g",
     "https://imgur.com/a/uPY7lhx",
     "https://imgur.com/a/kOBBw8r",
+    "https://imgur.com/a/9g7IAa1",
 )
 
 Rize_list = (
@@ -177,6 +183,10 @@ Rize_list = (
     "https://imgur.com/a/lJKB5Qo",
     "https://imgur.com/a/oQm65ua",
     "https://imgur.com/a/U2CHvQ4",
+    "https://imgur.com/a/fl8YRoB",
+    "https://imgur.com/a/R29mL58",
+    "https://imgur.com/a/K6G6QfD",
+    "https://imgur.com/a/cyUs2zr",
 )
 
 Syaro_list = (
