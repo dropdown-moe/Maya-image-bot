@@ -181,30 +181,30 @@ async def fuyu(ctx):
 # i tried to get all the list stuff and such into listodata
 # but it didnt seem to work so unless you have some magic trick dont try to move it
 RPS_response_list = (
-    "Rock,",
-    "Paper,",
-    "Scissors,",
+    "Rock",
+    "Paper",
+    "Scissors",
 )
 
 @bot.command()
-@lightbulb.decorators.option("choice", "your play", choices = ("Rock,", "Paper,", "Scissors,"), required=True)
+@lightbulb.decorators.option("choice", "your play", choices = ("Rock", "Paper", "Scissors"), required=True)
 @lightbulb.command('rps', 'Play Rock, Paper, Scissors with Maya!',)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rps(ctx):
     bot_choice = random.choice(RPS_response_list)
     print("RPS command invoked")
     if ctx.options.choice == bot_choice:
-        await ctx.respond(f"{bot_choice} Its a tie... <:mayaded:787784902602129419>")
+        await ctx.respond(f"{bot_choice}, Its a tie... <:mayaded:787784902602129419>")
         return
     
     win = (
-    ctx.options.choice == "Rock," and bot_choice == "Scissors," or
-    ctx.options.choice == "Paper," and bot_choice == "Rock," or
-    ctx.options.choice == "Scissors," and bot_choice == "Paper,"
+    ctx.options.choice == "Rock" and bot_choice == "Scissors" or
+    ctx.options.choice == "Paper" and bot_choice == "Rock" or
+    ctx.options.choice == "Scissors" and bot_choice == "Paper"
 )
     if win:
-        await ctx.respond(f"{bot_choice} No fair!!! <:MayaYandere:853545189741559828>")
+        await ctx.respond(f"{bot_choice}, No fair!!! <:MayaYandere:853545189741559828>")
     else:
-        await ctx.respond(f"{bot_choice} I won! better luck next time! <:MayaSmug:741219402363437076>")
+        await ctx.respond(f"{bot_choice}, I won! better luck next time! <:MayaSmug:741219402363437076>")
 
 bot.run()
