@@ -61,6 +61,7 @@ Maya_list = (
     "https://imgur.com/a/Cz4rPYc",
     "https://imgur.com/a/XyoFEuz",
     "https://imgur.com/a/Xf0ylYG",
+    "https://imgur.com/a/SGuLMgJ",
 )
 
 Megu_list = (
@@ -136,6 +137,9 @@ Chimame_list = (
     "https://imgur.com/a/HdmLapI",
     "https://twitter.com/mozukun43/status/1314877808246575106",
     "https://imgur.com/a/43PXfyu",
+    "https://imgur.com/a/3cIESlT",
+    "https://imgur.com/a/s2PZJry",
+    "https://imgur.com/a/vUkDbSf",
 )
 
 Cocoa_list = (
