@@ -24,6 +24,9 @@ bot = lightbulb.BotApp(
     )
 )
 
+banned_users_list = (
+    
+)
 
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent):
@@ -45,6 +48,10 @@ async def on_started(event):
 @lightbulb.command('ping', 'check if maya is awake!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Greeting_list))
     print("Ping command invoked")
 
@@ -55,6 +62,10 @@ async def ping(ctx):
 @lightbulb.command('maya', 'provides an adorable maya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def maya(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Maya_list))
     print("Maya command invoked")
 
@@ -65,6 +76,10 @@ async def maya(ctx):
 @lightbulb.command('megu', 'provides an adorable megu image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def megu(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Megu_list))
     print("Megu command invoked")
 
@@ -75,6 +90,10 @@ async def megu(ctx):
 @lightbulb.command('chino', 'provides an adorable chino image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Chino_list))
     print("Chino command invoked")
 
@@ -85,6 +104,10 @@ async def chino(ctx):
 @lightbulb.command('chimame', 'provides an adorable chimame image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chimame(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Chimame_list))
     print("Chimame command invoked")
 
@@ -95,6 +118,10 @@ async def chimame(ctx):
 @lightbulb.command('cocoa', 'provides an adorable cocoa image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cocoa(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Cocoa_list))
     print("Cocoa command invoked")
 
@@ -105,6 +132,10 @@ async def cocoa(ctx):
 @lightbulb.command('rize', 'provides an adorable rize image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rize(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Rize_list))
     print("Rize command invoked")
 
@@ -115,6 +146,10 @@ async def rize(ctx):
 @lightbulb.command('syaro', 'provides an adorable syaro image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def syaro(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Syaro_list))
     print("Syaro command invoked")
 
@@ -125,6 +160,10 @@ async def syaro(ctx):
 @lightbulb.command('chiya', 'provides an adorable chiya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chiya(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Chiya_list))
     print("Chiya command invoked")
 
@@ -135,6 +174,10 @@ async def chiya(ctx):
 @lightbulb.command('patmaya', 'pats maya!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def patmaya(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond('<a:mayapat1:855215364370595840>')
     print(("Patmaya command invoked"))
 
@@ -145,6 +188,10 @@ async def patmaya(ctx):
 @lightbulb.command('patmegu', 'pats megu!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def patmegu(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond('<a:MeguPat:904726832027422720>')
     print("Patmegu command invoked")
 
@@ -155,6 +202,10 @@ async def patmegu(ctx):
 @lightbulb.command('patchino', 'pats chino!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def patchino(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond('<a:patchino:997143091175751791>')
     print("Patchino command invoked")
 
@@ -165,6 +216,10 @@ async def patchino(ctx):
 @lightbulb.command('cqc', 'Use CQC!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cqc(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.cqc_list))
     print("CQC command invoked")
 
@@ -175,6 +230,10 @@ async def cqc(ctx):
 @lightbulb.command('fuyu', 'provides an adorable fuyu image! (mostly manga stuff)')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def fuyu(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
     await ctx.respond(random.choice(listodata.Fuyu_list))
     print("Fuyu command invoked")
 
@@ -186,11 +245,21 @@ RPS_response_list = (
     "Scissors",
 )
 
-@bot.command()
+@bot.command
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.option("choice", "your play", choices = ("Rock", "Paper", "Scissors"), required=True)
-@lightbulb.command('rps', 'Play Rock, Paper, Scissors with Maya!',)
+@lightbulb.command('rps', 'Play Rock Paper Scissors with Maya!',)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rps(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+        
     bot_choice = random.choice(RPS_response_list)
     print("RPS command invoked")
     if ctx.options.choice == bot_choice:
@@ -203,8 +272,93 @@ async def rps(ctx):
     ctx.options.choice == "Scissors" and bot_choice == "Paper"
 )
     if win:
-        await ctx.respond(f"{bot_choice}, No fair!!! <:MayaYandere:853545189741559828>")
+        await ctx.respond(f"{bot_choice}... Ah, no fair!!! <a:MayaTantrum:852257288630566952>")
     else:
         await ctx.respond(f"{bot_choice}, I won! better luck next time! <:MayaSmug:741219402363437076>")
+
+@bot.command
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=10, uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.option("choice", "What you want maya to rate.", required=True)
+@lightbulb.command('rate', 'Make Maya rate something!')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def rate(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
+    if ctx.options.choice in (
+        "Maya", "maya", "Maya Jouga", "maya jouga", "Jouga Maya", "jouga maya"
+        ):
+        await ctx.respond(
+            "Ehh Myself? i dont know. <:MayaLaugh:981702800562073600>"
+            )
+        return
+
+    if ctx.options.choice in (
+        "Megu", "megu", "Megumi Natsu", "megumi natsu", "Natsu Megumi", "natsu megumi"
+        ):
+        await ctx.respond(
+            "Megu? I've been friends with her since we were both little. <:MayaLaugh:981702800562073600>"
+            )
+        return
+
+    if ctx.options.choice in (
+        "Chino", "chino", "Chino Kafuu", "chino kafuu", "Kafuu Chino", "kafuu chino"
+        ):
+        await ctx.respond(
+            "Chino? Shes a bit quiet but a friend nontheless! <:MayaSalute:741219403118674000>"
+            )
+        return
+
+    if ctx.options.choice in (
+        "Rize", "rize", "Rize Tedeza", "rize tedeza", "Tedeza Rize", "tedeza rize"
+        ):
+        await ctx.respond(
+            "Rize? She's super cool! She knows CQC and stuff! <:MayaSugoi:741219402770546759>"
+            )
+        return
+    if ctx.options.choice in (
+        "Cocoa", "cocoa", "Cocoa Hoto", "cocoa hoto", "Hoto Cocoa", "hoto cocoa"
+    ):
+        await ctx.respond(
+            "Cocoa? She's a bit of an airhead but cool. <:MayaLaugh:981702800562073600>"
+        )
+        return
+
+    if ctx.options.choice in (
+        "Syaro", "syaro", "Syaro Kirima", "syaro kirima", "Kirima Syaro", "kirima syaro"
+    ):
+        await ctx.respond(
+            "Syaro? She's super mature and responsible, cool... <:MayaSugoi:741219402770546759>"
+        )
+        return
+
+    if ctx.options.choice in (
+        "Chiya", "chiya", "Chiya Ujimatsu", "chiya ujimatsu", " Ujimatsu Chiya", "ujimatsu Chiya"
+    ):
+        await ctx.respond(
+            "Chiya? She's kind of an airhead too but a fun person. <:mayasmirk:769351955565772822>"
+        )
+        return
+
+    if ctx.options.choice in (
+        "Tippy", "tippy"
+    ):
+        await ctx.respond(
+            "Tippy? that's Chino's rabbit, i feel like i would get XP for defeating it! <:MayaXD:982772380902490132>"
+        )
+        return
+
+    if ctx.options.choice in (
+        "Fuyu", "fuyu", "Fuyu Fuiba", "fuyu fuiba", "Fuiba Fuyu", "fuiba fuyu"
+    ):
+        await ctx.respond(
+        "Fuyu...? who? <:mayaded:787784902602129419>"
+        )
+        return
+
+    else: 
+        await ctx.respond(f"Hmm i rate {ctx.options.choice} {random.choice(range(1, 11))}/10 <:mayathink:787784906084188172>")
 
 bot.run()
