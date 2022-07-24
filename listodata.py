@@ -125,6 +125,7 @@ Chino_list = (
     "https://imgur.com/a/vWvK26y",
     "https://imgur.com/a/dOxTqra",
     "https://imgur.com/a/9g7IAa1",
+    "https://imgur.com/a/ayL1WbA"
 )
 
 Chimame_list = (

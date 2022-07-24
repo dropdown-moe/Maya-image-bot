@@ -25,6 +25,8 @@ bot = lightbulb.BotApp(
     )
 )
 
+
+
 banned_users_list = (
     
 )
@@ -32,10 +34,12 @@ banned_users_list = (
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent):
     if isinstance(event.exception, lightbulb.CommandIsOnCooldown): 
-        await event.context.respond(f"Hey, dont spam! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
+        await event.context.respond(f"Command is on cooldown.", flags=hikari.MessageFlag.EPHEMERAL)
         print("Command cooldown error")
     if isinstance(event.exception, lightbulb.MaxConcurrencyLimitReached):
-        await event.context.respond(f"Too many commands running at the same time! <:MayaHowRude:798609231393587240>", flags=hikari.MessageFlag.EPHEMERAL)
+        await event.context.respond(
+            f"Too many commands running at the same time! <:MayaHowRude:798609231393587240>", flags=hikari.MessageFlag.EPHEMERAL
+            )
         print("Concurrency limit reached")
 
 @bot.listen(hikari.StartedEvent)
@@ -168,48 +172,6 @@ async def chiya(ctx):
     await ctx.respond(random.choice(listodata.Chiya_list))
     print("Chiya command invoked")
 
-# Pat Maya
-@bot.command
-@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
-@lightbulb.command('patmaya', 'pats maya!')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def patmaya(ctx):
-    if ctx.author.id in (banned_users_list):
-        await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
-        return
-
-    await ctx.respond('<a:mayapat1:855215364370595840>')
-    print(("Patmaya command invoked"))
-
-# Pat Megu
-@bot.command
-@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
-@lightbulb.command('patmegu', 'pats megu!')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def patmegu(ctx):
-    if ctx.author.id in (banned_users_list):
-        await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
-        return
-
-    await ctx.respond('<a:MeguPat:904726832027422720>')
-    print("Patmegu command invoked")
-
-# Pat Chino
-@bot.command
-@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
-@lightbulb.command('patchino', 'pats chino!')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def patchino(ctx):
-    if ctx.author.id in (banned_users_list):
-        await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
-        return
-
-    await ctx.respond('<a:patchino:997143091175751791>')
-    print("Patchino command invoked")
-
 # CQC
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
@@ -290,7 +252,7 @@ async def rate(ctx):
         "@everyone", "@Everyone"
         ):
         await ctx.respond(
-            "Nice try bucko <:mayasmirk:769351955565772822>", flags=hikari.MessageFlag.EPHEMERAL
+            "Nice try bucko <a:MayaTssk:1000491767650582539>", flags=hikari.MessageFlag.EPHEMERAL
             )
         return
 
@@ -298,7 +260,7 @@ async def rate(ctx):
         "Maya", "maya", "Maya Jouga", "maya jouga", "Jouga Maya", "jouga maya", "Myself", "myself", "me", "me"
         ):
         await ctx.respond(
-            "Ehh Myself? i dont know. <:MayaLaugh:981702800562073600>"
+            "Ehh Myself? uhhh, I dont know. <:MayaLaugh:981702800562073600>"
             )
         return
 
@@ -365,7 +327,35 @@ async def rate(ctx):
         )
         return
     
+    if ctx.options.choice in (
+        "Aoyama", "aoyama", 
+        "Aoyama Midori", 
+        "aoyama midori", 
+        "Midori Aoyama", 
+        "midori aoyama", 
+        "Aoyama Blue Mountain", 
+        "aoyama blue mountain"
+    ):
+        await ctx.respond(
+            "Aoyama? I think Syaro told me about her, told me to be wary of her... <:mayaded:787784902602129419>"
+            )
+        return
+    if ctx.options.choice in (
+        "Anko", "anko"
+    ):
+        await ctx.respond(
+            "Anko? that's Chiya's rabbit, he's a bit strage, apparently he pounces to attack whenever he sees Syaro <:mayaded:787784902602129419>"
+        )
+        return
+    if ctx.options.choice in (
+        "Wild Geese", "wild geese"
+    ):
+        await ctx.respond(
+            "Wild Geese? that's Syaro's pet rabbit he's like the final boss after defeating Tippy! <:MayaSugoi:741219402770546759>"
+        )
+        return
+
     else: 
         await ctx.respond(f"I rate {ctx.options.choice} {random.choice(range(1, 11))}/10 <:mayasmirk:769351955565772822>")
-        
+
 bot.run()
