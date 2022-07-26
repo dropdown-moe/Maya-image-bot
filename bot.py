@@ -6,11 +6,18 @@ from dotenv import load_dotenv
 from telnetlib import SEND_URL
 from unittest import result
 from math import perm
+from tinydb import TinyDB, Query
+from tinydb.operations import add, increment 
+import tinydb
 import lightbulb
 import listodata
 import hikari
 import random
 import os
+import json
+import math
+
+db = TinyDB("db.json")
 
 load_dotenv()
 
@@ -25,8 +32,6 @@ bot = lightbulb.BotApp(
     )
 )
 
-
-
 banned_users_list = (
     
 )
@@ -34,7 +39,7 @@ banned_users_list = (
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent):
     if isinstance(event.exception, lightbulb.CommandIsOnCooldown): 
-        await event.context.respond(f"Command is on cooldown.", flags=hikari.MessageFlag.EPHEMERAL)
+        await event.context.respond(f"Oi, Don't spam! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
         print("Command cooldown error")
     if isinstance(event.exception, lightbulb.MaxConcurrencyLimitReached):
         await event.context.respond(
@@ -56,9 +61,17 @@ async def ping(ctx):
     if ctx.author.id in (banned_users_list):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
-
+    
+    data = Query()
+    if db.search(data.commandname == "ping"):
+        db.update(increment("count"), data.commandname == "ping")
+        print("Ping command invoked")
+        await ctx.respond(random.choice(listodata.Greeting_list))
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "ping", "count":1})
+        print("Ping command invoked")
     await ctx.respond(random.choice(listodata.Greeting_list))
-    print("Ping command invoked")
 
 # Maya
 @bot.command
@@ -71,6 +84,14 @@ async def maya(ctx):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
+    data = Query()
+    if db.search(data.commandname == "maya"):
+        db.update(increment("count"), data.commandname == "maya")
+        await ctx.respond(random.choice(listodata.Maya_list))
+        print("Maya command invoked")
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "maya", "count":1})
     await ctx.respond(random.choice(listodata.Maya_list))
     print("Maya command invoked")
 
@@ -85,6 +106,14 @@ async def megu(ctx):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
+    data = Query()
+    if db.search(data.commandname == "megu"):
+        db.update(increment("count"), data.commandname == "megu")
+        await ctx.respond(random.choice(listodata.Megu_list))
+        print("Megu command invoked")
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "megu", "count":1})
     await ctx.respond(random.choice(listodata.Megu_list))
     print("Megu command invoked")
 
@@ -99,6 +128,14 @@ async def chino(ctx):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
+    data = Query()
+    if db.search(data.commandname == "chino"):
+        db.update(increment("count"), data.commandname == "chino")
+        await ctx.respond(random.choice(listodata.Chino_list))
+        print("Chino command invoked")
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "chino", "count":1})
     await ctx.respond(random.choice(listodata.Chino_list))
     print("Chino command invoked")
 
@@ -113,6 +150,14 @@ async def chimame(ctx):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
+    data = Query()
+    if db.search(data.commandname == "chimame"):
+        db.update(increment("count"), data.commandname == "chimame")
+        await ctx.respond(random.choice(listodata.Chimame_list))
+        print("Chimame command invoked")
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "chimame", "count":1})
     await ctx.respond(random.choice(listodata.Chimame_list))
     print("Chimame command invoked")
 
@@ -127,6 +172,14 @@ async def cocoa(ctx):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
+    data = Query()
+    if db.search(data.commandname == "cocoa"):
+        db.update(increment("count"), data.commandname == "cocoa")
+        await ctx.respond(random.choice(listodata.Cocoa_list))
+        print("Cocoa command invoked")
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "cocoa", "count":1})
     await ctx.respond(random.choice(listodata.Cocoa_list))
     print("Cocoa command invoked")
 
@@ -141,6 +194,14 @@ async def rize(ctx):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
+    data = Query()
+    if db.search(data.commandname == "rize"):
+        db.update(increment("count"), data.commandname == "rize")
+        await ctx.respond(random.choice(listodata.Rize_list))
+        print("Rize command invoked")
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "rize", "count":1})
     await ctx.respond(random.choice(listodata.Rize_list))
     print("Rize command invoked")
 
@@ -155,6 +216,14 @@ async def syaro(ctx):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
+    data = Query()
+    if db.search(data.commandname == "syaro"):
+        db.update(increment("count"), data.commandname == "syaro")
+        await ctx.respond(random.choice(listodata.Syaro_list))
+        print("Syaro command invoked")
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "syaro", "count":1})
     await ctx.respond(random.choice(listodata.Syaro_list))
     print("Syaro command invoked")
 
@@ -169,22 +238,16 @@ async def chiya(ctx):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
+    data = Query()
+    if db.search(data.commandname == "chiya"):
+        db.update(increment("count"), data.commandname == "chiya")
+        await ctx.respond(random.choice(listodata.Chiya_list))
+        print("Chiya command invoked")
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "chiya", "count":1})
     await ctx.respond(random.choice(listodata.Chiya_list))
     print("Chiya command invoked")
-
-# CQC
-@bot.command
-@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
-@lightbulb.command('cqc', 'Use CQC!')
-@lightbulb.implements(lightbulb.SlashCommand)
-async def cqc(ctx):
-    if ctx.author.id in (banned_users_list):
-        await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
-        return
-
-    await ctx.respond(random.choice(listodata.cqc_list))
-    print("CQC command invoked")
 
 # Fuyu
 @bot.command
@@ -197,6 +260,14 @@ async def fuyu(ctx):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
+    data = Query()
+    if db.search(data.commandname == "fuyu"):
+        db.update(increment("count"), data.commandname == "fuyu")
+        await ctx.respond(random.choice(listodata.Fuyu_list))
+        print("Fuyu command invoked")
+        return
+    else:
+        db.insert({"type": "commandcounter", "commandname": "fuyu", "count":1})
     await ctx.respond(random.choice(listodata.Fuyu_list))
     print("Fuyu command invoked")
 
@@ -236,6 +307,7 @@ async def rps(ctx):
     else:
         await ctx.respond(f"{bot_choice}, I won! better luck next time! <:MayaSmug:741219402363437076>")
         print("someone just got owned by maya")
+
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=5, uses=1, bucket=lightbulb.UserBucket)
@@ -246,6 +318,7 @@ async def rate(ctx):
     if ctx.author.id in (banned_users_list):
         await ctx.respond("`You are banned from using commands.`", flags=hikari.MessageFlag.EPHEMERAL)
         return
+    
     print("Rate command invoked")
     
     if ctx.options.choice in (
@@ -257,7 +330,7 @@ async def rate(ctx):
         return
 
     if ctx.options.choice in (
-        "Maya", "maya", "Maya Jouga", "maya jouga", "Jouga Maya", "jouga maya", "Myself", "myself", "me", "me"
+        "Maya", "maya", "Maya Jouga", "maya jouga", "Jouga Maya", "jouga maya", "Myself", "myself", "Me", "me"
         ):
         await ctx.respond(
             "Ehh Myself? uhhh, I dont know. <:MayaLaugh:981702800562073600>"
@@ -344,7 +417,7 @@ async def rate(ctx):
         "Anko", "anko"
     ):
         await ctx.respond(
-            "Anko? that's Chiya's rabbit, he's a bit strage, apparently he pounces to attack whenever he sees Syaro <:mayaded:787784902602129419>"
+            "Anko? that's Chiya's rabbit, he's a bit strage, apparently he pounces to attack whenever he sees Syaro... <:mayaded:787784902602129419>"
         )
         return
     if ctx.options.choice in (
@@ -357,5 +430,71 @@ async def rate(ctx):
 
     else: 
         await ctx.respond(f"I rate {ctx.options.choice} {random.choice(range(1, 11))}/10 <:mayasmirk:769351955565772822>")
+
+@bot.command
+@lightbulb.command("usage", "display how many times each command has been used.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def usage(ctx: lightbulb.context):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
+    data = Query()
+    db.search(data.commandname == "ping")
+    command_name1 = db.get(data.commandname == "ping")
+    command_count1 = command_name1["count"]
+    
+    data = Query()
+    db.search(data.commandname == "maya")
+    command_name2 = db.get(data.commandname == "maya")
+    command_count2 = command_name2["count"]
+
+    data = Query()
+    db.search(data.commandname == "megu")
+    command_name3 = db.get(data.commandname == "megu")
+    command_count3 = command_name3["count"]
+    
+    data = Query()
+    db.search(data.commandname == "chino")
+    command_name4 = db.get(data.commandname == "chino")
+    command_count4 = command_name4["count"]
+
+    data = Query()
+    db.search(data.commandname == "chimame")
+    command_name5 = db.get(data.commandname == "chimame")
+    command_count5 = command_name5["count"]
+
+    data = Query()
+    db.search(data.commandname == "cocoa")
+    command_name6 = db.get(data.commandname == "cocoa")
+    command_count6 = command_name6["count"]
+
+    data = Query()
+    db.search(data.commandname == "rize")
+    command_name7 = db.get(data.commandname == "rize")
+    command_count7 = command_name7["count"]
+
+    data = Query()
+    db.search(data.commandname == "syaro")
+    command_name8 = db.get(data.commandname == "syaro")
+    command_count8 = command_name8["count"]
+
+    data = Query()
+    db.search(data.commandname == "chiya")
+    command_name9 = db.get(data.commandname == "chiya")
+    command_count9 = command_name9["count"]
+
+    data = Query()
+    db.search(data.commandname == "fuyu")
+    command_name10 = db.get(data.commandname == "fuyu")
+    command_count10 = command_name10["count"]
+
+    global message_channel_id
+    embed = hikari.Embed(
+    title = "Command usage list. <:mayawink:769351954929287219>",
+    color = hikari.Color(616152),
+    description = f"/ping `{command_count1}`\n/maya `{command_count2}`\n/megu `{command_count3}`\n/chino `{command_count4}`\n/chimame `{command_count5}`\n/cocoa `{command_count6}`\n/rize `{command_count7}`\n/syaro `{command_count8}`\n/chiya `{command_count9}`\n/fuyu `{command_count10}`")
+    
+    await ctx.respond(embed=embed)
 
 bot.run()

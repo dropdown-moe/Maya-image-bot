@@ -9,11 +9,6 @@ Greeting_list = (
     "I overslept... <:mayaded:787784902602129419>",
 )
 
-cqc_list = (
-    "I-is this CQC?! <:MayaShock:804760846068744252>",
-    "I can do CQC and stuff too! <:MayaSmug:741219402363437076>",
-)
-
 Maya_list = (
     "https://imgur.com/a/5BCZbU6",
     "https://imgur.com/a/3eBuE73",
@@ -62,6 +57,12 @@ Maya_list = (
     "https://imgur.com/a/XyoFEuz",
     "https://imgur.com/a/Xf0ylYG",
     "https://imgur.com/a/SGuLMgJ",
+    "https://imgur.com/a/QXLnXDj",
+    "https://imgur.com/a/mmjnghS",
+    "https://imgur.com/a/2BEgzXa",
+    "https://imgur.com/a/wX0aRA8",
+    "https://imgur.com/a/vE3lsXh",
+    "https://imgur.com/a/9f03a6x",
 )
 
 Megu_list = (
@@ -86,6 +87,11 @@ Megu_list = (
     "https://imgur.com/a/4nzTh5A",
     "https://imgur.com/a/0QEZ2F7",
     "https://imgur.com/a/Y2Wq2WK",
+    "https://imgur.com/a/mmjnghS",
+    "https://imgur.com/a/2BEgzXa",
+    "https://imgur.com/a/wX0aRA8",
+    "https://imgur.com/a/EGmkLsv",
+    "https://imgur.com/a/vE3lsXh",
 )
 
 Chino_list = (
@@ -125,7 +131,8 @@ Chino_list = (
     "https://imgur.com/a/vWvK26y",
     "https://imgur.com/a/dOxTqra",
     "https://imgur.com/a/9g7IAa1",
-    "https://imgur.com/a/ayL1WbA"
+    "https://imgur.com/a/ayL1WbA",
+    "https://imgur.com/a/9f03a6x",
 )
 
 Chimame_list = (
@@ -192,6 +199,7 @@ Rize_list = (
     "https://imgur.com/a/R29mL58",
     "https://imgur.com/a/K6G6QfD",
     "https://imgur.com/a/cyUs2zr",
+    "https://imgur.com/a/9f03a6x",
 )
 
 Syaro_list = (
@@ -216,6 +224,7 @@ Syaro_list = (
     "https://imgur.com/a/5gsEEos",
     "https://imgur.com/a/srUXXka",
     "https://imgur.com/a/hkQOZfb",
+    "https://imgur.com/a/9f03a6x",
 )
 
 Chiya_list = (
@@ -257,4 +266,5 @@ Fuyu_list = (
     "https://imgur.com/a/ZBetWp2",
     "https://imgur.com/a/nKrwoC3",
     "https://imgur.com/a/GjzJB4K",
+    "https://imgur.com/a/5nazZlC",
 )
