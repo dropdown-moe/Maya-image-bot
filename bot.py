@@ -29,6 +29,7 @@ bot = lightbulb.BotApp(
     965307477698707506, 
     767743597809500160, 
     134028939764039681,
+    1001491591623606373,
     )
 )
 
@@ -295,6 +296,13 @@ async def rps(ctx):
     print("RPS command invoked")
     
     if ctx.options.choice == bot_choice:
+        data = Query()
+        if db.search(data.condition == "tie"):
+            db.update(increment("count"), data.condition == "tie")
+            await ctx.respond(f"{bot_choice}, Its a tie... <:mayaded:787784902602129419>")
+            return
+        else:
+            db.insert({"type": "rpscounter", "condition": "tie", "count":1})
         await ctx.respond(f"{bot_choice}, Its a tie... <:mayaded:787784902602129419>")
         return
     
@@ -304,8 +312,22 @@ async def rps(ctx):
     ctx.options.choice == "Scissors" and bot_choice == "Paper"
 )
     if win:
+        data = Query()
+        if db.search(data.condition == "lose"):
+            db.update(increment("count"), data.condition == "lose")
+            await ctx.respond(f"{bot_choice}... Ah, no fair!!! <a:MayaTantrum:852257288630566952>")
+            return
+        else:
+            db.insert({"type": "rpscounter", "condition": "lose", "count":1})
         await ctx.respond(f"{bot_choice}... Ah, no fair!!! <a:MayaTantrum:852257288630566952>")
     else:
+        data = Query()
+        if db.search(data.condition == "win"):
+            db.update(increment("count"), data.condition == "win")
+            await ctx.respond(f"{bot_choice}, I won! better luck next time! <:MayaSmug:741219402363437076>")
+            return
+        else:
+            db.insert({"type": "rpscounter", "condition": "win", "count":1})
         await ctx.respond(f"{bot_choice}, I won! better luck next time! <:MayaSmug:741219402363437076>")
         print("someone just got owned by maya")
 
@@ -436,7 +458,7 @@ async def rate(ctx):
 # Command usage
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=30, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.command("usage", "display how many times each command has been used.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def usage(ctx: lightbulb.context):
@@ -499,6 +521,40 @@ async def usage(ctx: lightbulb.context):
     title = "Command usage list. <:mayawink:769351954929287219>",
     color = hikari.Color(616152),
     description = f"/ping `{command_count1}`\n/maya `{command_count2}`\n/megu `{command_count3}`\n/chino `{command_count4}`\n/chimame `{command_count5}`\n/cocoa `{command_count6}`\n/rize `{command_count7}`\n/syaro `{command_count8}`\n/chiya `{command_count9}`\n/fuyu `{command_count10}`")
+    
+    await ctx.respond(embed=embed)
+
+# RPS stats
+@bot.command
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=30, uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.command("rpsstats", "Show RPS Stats.")
+@lightbulb.implements(lightbulb.SlashCommand)
+async def rpsstats(ctx: lightbulb.context):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
+    data = Query()
+    db.search(data.condition == "win")
+    RPScondition1 = db.get(data.condition == "win")
+    RPScounter1 = RPScondition1["count"]
+
+    data = Query()
+    db.search(data.condition == "tie")
+    RPScondition2 = db.get(data.condition == "tie")
+    RPScounter2 = RPScondition2["count"]
+
+    data = Query()
+    db.search(data.condition == "lose")
+    RPScondition3 = db.get(data.condition == "lose")
+    RPScounter3 = RPScondition3["count"]
+
+    global message_channel_id
+    embed = hikari.Embed(
+    title = "RPS Stats. <:mayawink:769351954929287219>",
+    color = hikari.Color(616152),
+    description = f"Maya has `{RPScounter1}` Wins in RPS\nMaya has `{RPScounter2}` Ties in RPS\nMaya has `{RPScounter3}` Losses in RPS")
     
     await ctx.respond(embed=embed)
 
