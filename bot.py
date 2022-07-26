@@ -279,6 +279,7 @@ RPS_response_list = (
     "Scissors",
 )
 
+# RPS
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
@@ -308,6 +309,7 @@ async def rps(ctx):
         await ctx.respond(f"{bot_choice}, I won! better luck next time! <:MayaSmug:741219402363437076>")
         print("someone just got owned by maya")
 
+# Rate
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=5, uses=1, bucket=lightbulb.UserBucket)
@@ -431,7 +433,10 @@ async def rate(ctx):
     else: 
         await ctx.respond(f"I rate {ctx.options.choice} {random.choice(range(1, 11))}/10 <:mayasmirk:769351955565772822>")
 
+# Command usage
 @bot.command
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.command("usage", "display how many times each command has been used.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def usage(ctx: lightbulb.context):
