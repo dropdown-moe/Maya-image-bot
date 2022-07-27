@@ -1,3 +1,5 @@
+# Support server https://discord.gg/bYMjhdADc6
+
 from random import Random, random, sample
 from multiprocessing import context
 from email.policy import default
@@ -16,8 +18,10 @@ import random
 import os
 import json
 import math
+import chatbot
 
 db = TinyDB("db.json")
+# This defines the database i use
 
 load_dotenv()
 
@@ -32,26 +36,31 @@ bot = lightbulb.BotApp(
     1001491591623606373,
     )
 )
-
+# These are server ID's for servers that commands work in, if a servers ID is not this this list commands will not work in it
 banned_users_list = (
     
 )
+# Anyone whose user ID is on this list cannot use commands, do not add any user ID's to this on your own volition
 
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent):
     if isinstance(event.exception, lightbulb.CommandIsOnCooldown): 
+        print("command cooldown error")
         await event.context.respond(f"Oi, Don't spam! <:mayagun:978841590644752464>", flags=hikari.MessageFlag.EPHEMERAL)
-        print("Command cooldown error")
+        # This is an error condition that triggers if a person tries to send too many commands too quickly
     if isinstance(event.exception, lightbulb.MaxConcurrencyLimitReached):
+        print("Concurrency limit reached")
         await event.context.respond(
             f"Too many commands running at the same time! <:MayaHowRude:798609231393587240>", flags=hikari.MessageFlag.EPHEMERAL
             )
-        print("Concurrency limit reached")
-
+        # This is an error condition that triggers if too many commands are trying to run at the same time
+    if isinstance(event.exception, lightbulb.CheckFailure):
+        await event.context.respond(f"This command is restricted to the dev only for now", flags=hikari.MessageFlag.EPHEMERAL)
+        # this is an error condition that triggers if certain checks arent met, i am only using it to restrict certain commands to only myself for now
 @bot.listen(hikari.StartedEvent)
 async def on_started(event):
     print('bot has started!')
-
+    # This just prints that the bot has started
 # Greetings
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
@@ -62,17 +71,23 @@ async def ping(ctx):
     if ctx.author.id in (banned_users_list):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
-    
+    # This checks if the user ID of whoever invoked the command is in banned_users_list,
+    # if it is then command will reply with an ephemeral error message instead of the normal response
+
     data = Query()
     if db.search(data.commandname == "ping"):
         db.update(increment("count"), data.commandname == "ping")
         print("Ping command invoked")
         await ctx.respond(random.choice(listodata.Greeting_list))
         return
+        # This code searches a database for a command called Ping and adds 1 to a counter in it
     else:
         db.insert({"type": "commandcounter", "commandname": "ping", "count":1})
         print("Ping command invoked")
+        # If the above code doesn't find a instance of a Ping command in the database this code inserts said data,
+        # this is redundant after the command has been invoked just once but i will keep the code just in case regardless
     await ctx.respond(random.choice(listodata.Greeting_list))
+    # This code sends a random response from Greeting_list in the listodata file
 
 # Maya
 @bot.command
@@ -121,7 +136,7 @@ async def megu(ctx):
 # Chino
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=10, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chino', 'provides an adorable chino image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
@@ -305,12 +320,14 @@ async def rps(ctx):
             db.insert({"type": "rpscounter", "condition": "tie", "count":1})
         await ctx.respond(f"{bot_choice}, Its a tie... <:mayaded:787784902602129419>")
         return
+        # This code checks if the bot's choice matches the Authors choice and sends the Tie response if it does
     
     win = (
     ctx.options.choice == "Rock" and bot_choice == "Scissors" or
     ctx.options.choice == "Paper" and bot_choice == "Rock" or
     ctx.options.choice == "Scissors" and bot_choice == "Paper"
-)
+    )
+    # These are all the conditions for the Author winning
     if win:
         data = Query()
         if db.search(data.condition == "lose"):
@@ -320,6 +337,7 @@ async def rps(ctx):
         else:
             db.insert({"type": "rpscounter", "condition": "lose", "count":1})
         await ctx.respond(f"{bot_choice}... Ah, no fair!!! <a:MayaTantrum:852257288630566952>")
+        # if any of the win conditions are met this response will send   
     else:
         data = Query()
         if db.search(data.condition == "win"):
@@ -330,6 +348,7 @@ async def rps(ctx):
             db.insert({"type": "rpscounter", "condition": "win", "count":1})
         await ctx.respond(f"{bot_choice}, I won! better luck next time! <:MayaSmug:741219402363437076>")
         print("someone just got owned by maya")
+        # If none of the win conditions are met this response will send
 
 # Rate
 @bot.command
@@ -451,9 +470,42 @@ async def rate(ctx):
             "Wild Geese? that's Syaro's pet rabbit he's like the final boss after defeating Tippy! <:MayaSugoi:741219402770546759>"
         )
         return
-
+    if ctx.options.choice in (
+        "Chimame", "chimame", "Chimame Tai", "chimame tai"
+    ):
+        await ctx.respond(
+            "I initially didn't like the name, but its grown on me since. <:mayasmirk:769351955565772822>"
+        )
+        return
+    if ctx.options.choice in (
+        "Takahiro", "takahiro", "Takahiro Kafuu", "takahiro kafuu", "Kafuu Takahiro", "kafuu takahiro"
+    ):
+        await ctx.respond(
+            "Takahiro? That's Chino's Dad, Me and Megu interviewed him for a school project once. <:MayaXD:982772380902490132>"
+        )
+        return
+    # All of the above code checks if the Authors choice contains certain words and if they do, sends a custom response
     else: 
         await ctx.respond(f"I rate {ctx.options.choice} {random.choice(range(1, 11))}/10 <:mayasmirk:769351955565772822>")
+    # If none of the special responses are triggered this code takes whatever the authors input was and rates it a random number out of 10
+
+# Chatbot, This command is a work in progress
+@bot.command
+@lightbulb.add_checks(lightbulb.owner_only)
+@lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.option("choice", "what you want to say to maya. (WIP, restricted to owner only)", required=True)
+@lightbulb.command('say', 'say something to maya')
+@lightbulb.implements(lightbulb.SlashCommand)
+async def rate(ctx):
+    if ctx.author.id in (banned_users_list):
+        await ctx.respond("`You are banned from using commands.`", flags=hikari.MessageFlag.EPHEMERAL)
+        return
+
+    # Greetings
+    if ctx.options.choice in (chatbot.Greeting_conditions):
+        await ctx.respond(random.choice(chatbot.Greeting_replies))
+
 
 # Command usage
 @bot.command
@@ -515,13 +567,15 @@ async def usage(ctx: lightbulb.context):
     db.search(data.commandname == "fuyu")
     command_name10 = db.get(data.commandname == "fuyu")
     command_count10 = command_name10["count"]
-
+    # The above code simply Retreives all the Count data from my database, there likely is a more efficient way of doing this that i am not aware of so feel free to improve it
+    
     global message_channel_id
     embed = hikari.Embed(
     title = "Command usage list. <:mayawink:769351954929287219>",
     color = hikari.Color(616152),
     description = f"/ping `{command_count1}`\n/maya `{command_count2}`\n/megu `{command_count3}`\n/chino `{command_count4}`\n/chimame `{command_count5}`\n/cocoa `{command_count6}`\n/rize `{command_count7}`\n/syaro `{command_count8}`\n/chiya `{command_count9}`\n/fuyu `{command_count10}`")
-    
+    # The mess above just makes an embed
+
     await ctx.respond(embed=embed)
 
 # RPS stats
@@ -549,7 +603,7 @@ async def rpsstats(ctx: lightbulb.context):
     db.search(data.condition == "lose")
     RPScondition3 = db.get(data.condition == "lose")
     RPScounter3 = RPScondition3["count"]
-
+    # Similarly to the Usage command this code simply gets all the count data for the RPS command
     global message_channel_id
     embed = hikari.Embed(
     title = "RPS Stats. <:mayawink:769351954929287219>",
