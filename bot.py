@@ -4,6 +4,7 @@ from random import Random, random, sample
 from multiprocessing import context
 from email.policy import default
 from secrets import choice
+from urllib import response
 from dotenv import load_dotenv
 from telnetlib import SEND_URL
 from unittest import result
@@ -37,6 +38,7 @@ bot = lightbulb.BotApp(
     )
 )
 # These are server ID's for servers that commands work in, if a servers ID is not this this list commands will not work in it
+
 banned_users_list = (
     
 )
@@ -78,7 +80,7 @@ async def ping(ctx):
     if db.search(data.commandname == "ping"):
         db.update(increment("count"), data.commandname == "ping")
         print("Ping command invoked")
-        await ctx.respond(random.choice(listodata.Greeting_list))
+        await ctx.respond("Im here! <a:Mayapeek:984626950825996389>")
         return
         # This code searches a database for a command called Ping and adds 1 to a counter in it
     else:
@@ -86,7 +88,7 @@ async def ping(ctx):
         print("Ping command invoked")
         # If the above code doesn't find a instance of a Ping command in the database this code inserts said data,
         # this is redundant after the command has been invoked just once but i will keep the code just in case regardless
-    await ctx.respond(random.choice(listodata.Greeting_list))
+    await ctx.respond("Im here! <a:Mayapeek:984626950825996389>")
     # This code sends a random response from Greeting_list in the listodata file
 
 # Maya
@@ -489,23 +491,25 @@ async def rate(ctx):
         await ctx.respond(f"I rate {ctx.options.choice} {random.choice(range(1, 11))}/10 <:mayasmirk:769351955565772822>")
     # If none of the special responses are triggered this code takes whatever the authors input was and rates it a random number out of 10
 
-# Chatbot, This command is a work in progress
+# Chatbot, (This command is a work in progress)
 @bot.command
-@lightbulb.add_checks(lightbulb.owner_only)
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=5, uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.option("choice", "what you want to say to maya. (WIP, restricted to owner only)", required=True)
+@lightbulb.decorators.option("choice", "what you want to say to maya. (WIP)", required=True)
 @lightbulb.command('say', 'say something to maya')
 @lightbulb.implements(lightbulb.SlashCommand)
-async def rate(ctx):
+async def say(ctx):
     if ctx.author.id in (banned_users_list):
         await ctx.respond("`You are banned from using commands.`", flags=hikari.MessageFlag.EPHEMERAL)
         return
+    x = ctx.options.choice.lower()
 
-    # Greetings
-    if ctx.options.choice in (chatbot.Greeting_conditions):
-        await ctx.respond(random.choice(chatbot.Greeting_replies))
-
+    for topic, value in chatbot.maya.items():
+        if topic in x:
+            await ctx.respond(random.choice(value))
+            return
+    else: 
+        await ctx.respond("Ehh, I'm not sure how to respond. <:mayaded:787784902602129419>")
 
 # Command usage
 @bot.command
@@ -581,7 +585,7 @@ async def usage(ctx: lightbulb.context):
 # RPS stats
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=30, uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=15, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.command("rpsstats", "Show RPS Stats.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rpsstats(ctx: lightbulb.context):
