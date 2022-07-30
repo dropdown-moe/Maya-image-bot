@@ -63,7 +63,7 @@ async def on_started(event):
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
-@lightbulb.command('ping', 'check if maya is awake!')
+@lightbulb.command('poke', 'check if maya is awake! (use as ping command)')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
     if ctx.author.id in (bannedusers.bannedusers):
@@ -76,7 +76,7 @@ async def ping(ctx):
     if db.search(data.commandname == "ping"):
         db.update(increment("count"), data.commandname == "ping")
         print("Ping command invoked")
-        await ctx.respond("Im here! <a:Mayapeek:984626950825996389>")
+        await ctx.respond("Oi, stop that! <:MayaBlech:741219402124492840>")
         return
         # This code searches a database for a command called Ping and adds 1 to a counter in it
     else:
@@ -84,7 +84,7 @@ async def ping(ctx):
         print("Ping command invoked")
         # If the above code doesn't find a instance of a Ping command in the database this code inserts said data,
         # this is redundant after the command has been invoked just once but i will keep the code just in case regardless
-    await ctx.respond("Im here! <a:Mayapeek:984626950825996389>")
+    await ctx.respond("Oi, stop that! <:MayaBlech:741219402124492840>")
     # This code sends a random response from Greeting_list in the listodata file
 
 # Maya
@@ -319,7 +319,7 @@ async def rps(ctx):
         await ctx.respond(f"{bot_choice}, Its a tie... <:mayaded:787784902602129419>")
         return
         # This code checks if the bot's choice matches the Authors choice and sends the Tie response if it does
-    
+
     win = (
     ctx.options.choice == "Rock" and bot_choice == "Scissors" or
     ctx.options.choice == "Paper" and bot_choice == "Rock" or
@@ -499,10 +499,14 @@ async def say(ctx):
         await ctx.respond("`You are banned from using commands.`", flags=hikari.MessageFlag.EPHEMERAL)
         return
     x = ctx.options.choice.lower()
-
-    for topic, value in chatbot.maya.items():
-        if topic in x:
-            await ctx.respond(random.choice(value))
+    is_topic_exist = False
+    for topic, values in chatbot.Q_POSB.items():
+        for value in values:
+            if value in x:
+                is_topic_exist = True
+                await ctx.respond(random.choice(chatbot.maya[topic]))
+                break
+        if is_topic_exist:
             break
     else: 
         await ctx.respond("Ehh, I'm not sure how to respond. <:mayaded:787784902602129419>")
@@ -573,7 +577,7 @@ async def usage(ctx: lightbulb.context):
     embed = hikari.Embed(
     title = "Command usage list. <:mayawink:769351954929287219>",
     color = hikari.Color(616152),
-    description = f"/ping `{command_count1}`\n/maya `{command_count2}`\n/megu `{command_count3}`\n/chino `{command_count4}`\n/chimame `{command_count5}`\n/cocoa `{command_count6}`\n/rize `{command_count7}`\n/syaro `{command_count8}`\n/chiya `{command_count9}`\n/fuyu `{command_count10}`")
+    description = f"/poke `{command_count1}`\n/maya `{command_count2}`\n/megu `{command_count3}`\n/chino `{command_count4}`\n/chimame `{command_count5}`\n/cocoa `{command_count6}`\n/rize `{command_count7}`\n/syaro `{command_count8}`\n/chiya `{command_count9}`\n/fuyu `{command_count10}`")
     # The mess above just makes an embed
 
     await ctx.respond(embed=embed)
@@ -612,4 +616,12 @@ async def rpsstats(ctx: lightbulb.context):
     
     await ctx.respond(embed=embed)
 
-bot.run()
+
+
+bot.run(
+    status=hikari.Status.ONLINE,
+    activity=hikari.Activity(
+        name="With Megu!",
+        type=hikari.ActivityType.PLAYING,
+    ),
+)
