@@ -58,6 +58,7 @@ Maya_list = (
     "https://imgur.com/a/33hqAvi",
     "https://imgur.com/a/O2bMLsd",
     "https://imgur.com/a/eeVUU7v",
+    "https://imgur.com/a/hupdTdi",
 )
 
 Megu_list = (
@@ -87,6 +88,8 @@ Megu_list = (
     "https://imgur.com/a/wX0aRA8",
     "https://imgur.com/a/EGmkLsv",
     "https://imgur.com/a/vE3lsXh",
+    "https://imgur.com/a/owKG7sT",
+    "https://imgur.com/a/hupdTdi",
 )
 
 Chino_list = (
@@ -128,6 +131,10 @@ Chino_list = (
     "https://imgur.com/a/9g7IAa1",
     "https://imgur.com/a/ayL1WbA",
     "https://imgur.com/a/9f03a6x",
+    "https://imgur.com/a/0Kt7e6E",
+    "https://imgur.com/a/X3tTv1r",
+    "https://imgur.com/a/zcVnq3q",
+    "https://imgur.com/a/yXN7xpK",
 )
 
 Chimame_list = (
@@ -170,6 +177,8 @@ Cocoa_list = (
     "https://imgur.com/a/kOBBw8r",
     "https://imgur.com/a/9g7IAa1",
     "https://imgur.com/a/RrjtGiq",
+    "https://imgur.com/a/HuUXevg",
+    "https://imgur.com/a/Dk3BtAz",
 )
 
 Rize_list = (
@@ -198,6 +207,8 @@ Rize_list = (
     "https://imgur.com/a/9f03a6x",
     "https://imgur.com/a/XF3WOY1",
     "https://imgur.com/a/33hqAvi",
+    "https://imgur.com/a/oe3iWbw",
+    "https://imgur.com/a/MOf9epF",
 )
 
 Syaro_list = (
@@ -237,6 +248,8 @@ Syaro_list = (
     "https://imgur.com/a/X8LMKgL",
     "https://imgur.com/a/BYKZOnk",
     "https://imgur.com/a/jFCJx2e",
+    "https://imgur.com/a/yXN7xpK",
+    "https://imgur.com/a/Oiyb5T8",
 )
 
 Chiya_list = (
@@ -258,6 +271,8 @@ Chiya_list = (
     "https://imgur.com/a/s5gXkC3",
     "https://imgur.com/a/NovbC60",
     "https://imgur.com/a/eKeiL8B",
+    "https://imgur.com/a/Oiyb5T8",
+    "https://imgur.com/a/QQKaPCw",
 )
 
 Fuyu_list = (
