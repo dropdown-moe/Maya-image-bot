@@ -55,6 +55,9 @@ Maya_list = (
     "https://imgur.com/a/wX0aRA8",
     "https://imgur.com/a/vE3lsXh",
     "https://imgur.com/a/9f03a6x",
+    "https://imgur.com/a/33hqAvi",
+    "https://imgur.com/a/O2bMLsd",
+    "https://imgur.com/a/eeVUU7v",
 )
 
 Megu_list = (
@@ -194,6 +197,7 @@ Rize_list = (
     "https://imgur.com/a/cyUs2zr",
     "https://imgur.com/a/9f03a6x",
     "https://imgur.com/a/XF3WOY1",
+    "https://imgur.com/a/33hqAvi",
 )
 
 Syaro_list = (

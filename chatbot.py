@@ -16,6 +16,7 @@ maya = {
     "Hi! <:MayaWave:796340281766838293>",
 ],
 "how are you": [
-    "I'm good! <:MayaSalute:741219403118674000>"
+    "I'm good! <:MayaSalute:741219403118674000>",
+    "I'm  little sleepy <:mayasleepy:963562283219427389>",
 ]
 }

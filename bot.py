@@ -20,6 +20,7 @@ import os
 import json
 import math
 import chatbot
+import bannedusers
 
 db = TinyDB("db.json")
 # This defines the database i use
@@ -38,11 +39,6 @@ bot = lightbulb.BotApp(
     )
 )
 # These are server ID's for servers that commands work in, if a servers ID is not this this list commands will not work in it
-
-banned_users_list = (
-    
-)
-# Anyone whose user ID is on this list cannot use commands, do not add any user ID's to this on your own volition
 
 @bot.listen(lightbulb.CommandErrorEvent)
 async def on_error(event: lightbulb.CommandErrorEvent):
@@ -70,10 +66,10 @@ async def on_started(event):
 @lightbulb.command('ping', 'check if maya is awake!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
-    # This checks if the user ID of whoever invoked the command is in banned_users_list,
+    # This checks if the user ID of whoever invoked the command is in a banned users file i have,
     # if it is then command will reply with an ephemeral error message instead of the normal response
 
     data = Query()
@@ -98,7 +94,7 @@ async def ping(ctx):
 @lightbulb.command('maya', 'provides an adorable maya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def maya(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -120,7 +116,7 @@ async def maya(ctx):
 @lightbulb.command('megu', 'provides an adorable megu image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def megu(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -142,7 +138,7 @@ async def megu(ctx):
 @lightbulb.command('chino', 'provides an adorable chino image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -164,7 +160,7 @@ async def chino(ctx):
 @lightbulb.command('chimame', 'provides an adorable chimame image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chimame(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -186,7 +182,7 @@ async def chimame(ctx):
 @lightbulb.command('cocoa', 'provides an adorable cocoa image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def cocoa(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -208,7 +204,7 @@ async def cocoa(ctx):
 @lightbulb.command('rize', 'provides an adorable rize image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rize(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -230,7 +226,7 @@ async def rize(ctx):
 @lightbulb.command('syaro', 'provides an adorable syaro image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def syaro(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -252,7 +248,7 @@ async def syaro(ctx):
 @lightbulb.command('chiya', 'provides an adorable chiya image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chiya(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -274,7 +270,7 @@ async def chiya(ctx):
 @lightbulb.command('fuyu', 'provides an adorable fuyu image! (mostly manga stuff)')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def fuyu(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -305,7 +301,7 @@ RPS_response_list = (
 @lightbulb.command('rps', 'Play Rock Paper Scissors with Maya!',)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rps(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are not allowed to use commands`", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -360,7 +356,7 @@ async def rps(ctx):
 @lightbulb.command('rate', 'Make Maya rate something!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rate(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are banned from using commands.`", flags=hikari.MessageFlag.EPHEMERAL)
         return
     
@@ -499,7 +495,7 @@ async def rate(ctx):
 @lightbulb.command('say', 'say something to maya')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def say(ctx):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("`You are banned from using commands.`", flags=hikari.MessageFlag.EPHEMERAL)
         return
     x = ctx.options.choice.lower()
@@ -507,7 +503,7 @@ async def say(ctx):
     for topic, value in chatbot.maya.items():
         if topic in x:
             await ctx.respond(random.choice(value))
-            return
+            break
     else: 
         await ctx.respond("Ehh, I'm not sure how to respond. <:mayaded:787784902602129419>")
 
@@ -518,7 +514,7 @@ async def say(ctx):
 @lightbulb.command("usage", "display how many times each command has been used.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def usage(ctx: lightbulb.context):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
@@ -589,7 +585,7 @@ async def usage(ctx: lightbulb.context):
 @lightbulb.command("rpsstats", "Show RPS Stats.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rpsstats(ctx: lightbulb.context):
-    if ctx.author.id in (banned_users_list):
+    if ctx.author.id in (bannedusers.bannedusers):
         await ctx.respond("you are not allowed to use commands", flags=hikari.MessageFlag.EPHEMERAL)
         return
 
