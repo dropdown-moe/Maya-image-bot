@@ -1,22 +1,19 @@
 # This is possible author inputs in a given topic
 Q_POSB = {
-"morning": (
-    "good morning",
-    "morning",
-),
-"night": (
-    "good night",
-    "night",
-),
 "greetings": (
    "hello",
    "hi",
    "what's up",
    "greetings",
 ),
+"morning": (
+    "good morning",
+),
+"night": (
+    "good night",
+),
 "ask_feel": (
-    "how are you?",
-    "how are you feeling?",
+    "how are you",
 )
 }
 
