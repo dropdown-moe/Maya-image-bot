@@ -63,7 +63,10 @@ async def on_started(event):
 # Greetings
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
+# This sets how many instances of this command can run at the same time, if 2 people use this command at the same time one will return an error
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
+# This sets the length of the cooldown and how many times a command has to be used for the cooldown to trigger
+# The bucket represents on what basis the cooldown is applied, this one is applied on a server basis
 @lightbulb.command('poke', 'check if maya is awake! (use as ping command)')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def ping(ctx):
