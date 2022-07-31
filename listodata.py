@@ -293,5 +293,4 @@ Fuyu_list = (
     "https://imgur.com/a/ZBetWp2",
     "https://imgur.com/a/nKrwoC3",
     "https://imgur.com/a/GjzJB4K",
-    "https://imgur.com/a/5nazZlC",
 )
