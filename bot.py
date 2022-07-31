@@ -488,6 +488,7 @@ async def rate(ctx):
     # If none of the special responses are triggered this code takes whatever the authors input was and rates it a random number out of 10
 
 # Chatbot, (This command is a work in progress)
+# Most of the code here was contributed by contributors on the support discord
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=5, uses=1, bucket=lightbulb.UserBucket)
@@ -500,15 +501,20 @@ async def say(ctx):
         return
     x = ctx.options.choice.lower()
     is_topic_exist = False
+
+    def is_slice_in_list(s,l):
+        len_s = len(s)
+        return any(s == l[i:len_s+i] for i in range(len(l) - len_s+1))
+
     for topic, values in chatbot.Q_POSB.items():
         for value in values:
-            if value in x:
+            if (is_slice_in_list(value.split(), x.split())):
                 is_topic_exist = True
                 await ctx.respond(random.choice(chatbot.maya[topic]))
                 break
         if is_topic_exist:
             break
-    else: 
+    if not is_topic_exist: 
         await ctx.respond("Ehh, I'm not sure how to respond. <:mayaded:787784902602129419>")
 
 # Command usage
