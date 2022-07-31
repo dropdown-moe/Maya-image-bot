@@ -1,4 +1,5 @@
 # Support server https://discord.gg/bYMjhdADc6
+# If you ever have any questions feel free to ask in the #bot-questions channel
 
 from random import Random, random, sample
 from multiprocessing import context
@@ -74,18 +75,19 @@ async def ping(ctx):
 
     data = Query()
     if db.search(data.commandname == "ping"):
+        # This Queries my database for a command called 'ping'
         db.update(increment("count"), data.commandname == "ping")
+        # This increments the counter attached to the ping command by 1
         print("Ping command invoked")
         await ctx.respond("Oi, stop that! <:MayaBlech:741219402124492840>")
         return
-        # This code searches a database for a command called Ping and adds 1 to a counter in it
+        # This represents what the bot will actually send in the channel
     else:
         db.insert({"type": "commandcounter", "commandname": "ping", "count":1})
         print("Ping command invoked")
         # If the above code doesn't find a instance of a Ping command in the database this code inserts said data,
         # this is redundant after the command has been invoked just once but i will keep the code just in case regardless
     await ctx.respond("Oi, stop that! <:MayaBlech:741219402124492840>")
-    # This code sends a random response from Greeting_list in the listodata file
 
 # Maya
 @bot.command
@@ -298,6 +300,8 @@ RPS_response_list = (
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.UserBucket)
 @lightbulb.decorators.option("choice", "your play", choices = ("Rock", "Paper", "Scissors"), required=True)
+# This is an option decorator which allow people to input something before sending the command
+# The 'choices=' allows you to set specific options for the user to choose from, if this isnt added the user can input anything
 @lightbulb.command('rps', 'Play Rock Paper Scissors with Maya!',)
 @lightbulb.implements(lightbulb.SlashCommand)
 async def rps(ctx):
@@ -500,22 +504,28 @@ async def say(ctx):
         await ctx.respond("`You are banned from using commands.`", flags=hikari.MessageFlag.EPHEMERAL)
         return
     x = ctx.options.choice.lower()
+    # ctx.options.choice represents whatever the user input
     is_topic_exist = False
+    # Boolean flag if topic exists
 
     def is_slice_in_list(s,l):
         len_s = len(s)
         return any(s == l[i:len_s+i] for i in range(len(l) - len_s+1))
+    # This function checks if `s` is a sublist of 'l'
 
     for topic, values in chatbot.Q_POSB.items():
         for value in values:
             if (is_slice_in_list(value.split(), x.split())):
+            # checks if `userInput' contains the words from 'value' (in order)
                 is_topic_exist = True
                 await ctx.respond(random.choice(chatbot.maya[topic]))
                 break
         if is_topic_exist:
             break
+            # break the loop as topic has been found
     if not is_topic_exist: 
         await ctx.respond("Ehh, I'm not sure how to respond. <:mayaded:787784902602129419>")
+        # If the input doesn't match any topic
 
 # Command usage
 @bot.command
