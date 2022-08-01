@@ -139,7 +139,7 @@ async def megu(ctx):
 # Chino
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=10, uses=2, bucket=lightbulb.GuildBucket)
+@lightbulb.decorators.add_cooldown(length=5, uses=2, bucket=lightbulb.GuildBucket)
 @lightbulb.command('chino', 'provides an adorable chino image!')
 @lightbulb.implements(lightbulb.SlashCommand)
 async def chino(ctx):
@@ -533,7 +533,7 @@ async def say(ctx):
 # Command usage
 @bot.command
 @lightbulb.decorators.set_max_concurrency(uses=1, bucket=lightbulb.UserBucket)
-@lightbulb.decorators.add_cooldown(length=30, uses=1, bucket=lightbulb.UserBucket)
+@lightbulb.decorators.add_cooldown(length=15, uses=1, bucket=lightbulb.UserBucket)
 @lightbulb.command("usage", "display how many times each command has been used.")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def usage(ctx: lightbulb.context):
